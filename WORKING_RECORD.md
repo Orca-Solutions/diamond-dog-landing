@@ -17,3 +17,20 @@ Delivery: new private repository `Orca-Solutions/diamond-dog-landing`; implement
 ## 2026-10-20 — Repository destination correction
 
 Jason requested `Orca-Solutions/diamond-dog-landing` as the delivery destination. The repository was empty; seeded its base from the original README-only baseline, then pushed the existing implementation and this signed reference correction on the working branch. Website and brand assets are unchanged, so the prior browser verification and private deployment remain applicable. The prior repository is retained; its PR is superseded by the PR in the requested destination.
+
+## 2026-10-21 — Public-domain launch preparation
+
+Jason confirmed `diamonddog.orcasolutions.dev` and requested launch. PR #1 is
+merged as `6a9166149fe3640a553c9766cce9f97294633986`; GitHub now reports the
+repository public. Frontend/domain management prepared a separate Git-connected
+Cloudflare Pages rollout serving only `site/`. No brand-kit publication through
+the web root, backend, secret, storage, paid upgrade or OrcaOS tool change is
+needed. The existing private Sites review remains a separate deployment mirror.
+
+Updated the canonical URL and Open Graph image/URL to the public domain and
+documented the intended Git production/preview setup and rollback. These are
+metadata and hosting-documentation changes; page appearance and JavaScript are
+unchanged, so the October 20 viewport and interaction evidence remains applicable.
+Author checks cover JavaScript syntax, local asset references and whitespace.
+Production activation and normal public-domain HTTPS acceptance are recorded
+separately in the linked DevOps record; this source change does not prove launch.
