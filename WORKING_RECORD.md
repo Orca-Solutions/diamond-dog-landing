@@ -34,3 +34,31 @@ unchanged, so the October 20 viewport and interaction evidence remains applicabl
 Author checks cover JavaScript syntax, local asset references and whitespace.
 Production activation and normal public-domain HTTPS acceptance are recorded
 separately in the linked DevOps record; this source change does not prove launch.
+
+## 2026-10-21 — Favicon fallbacks and 16px tab icon
+
+Jason confirmed the SVG favicon shows in the live tab and asked for the optional
+fallbacks. The page linked only `assets/favicon.svg`, so `/favicon.ico` returned
+404 and there was no home-screen icon for iPhone and iPad.
+
+Added `site/favicon.ico` (16, 32 and 48 px) and `site/apple-touch-icon.png`
+(180 px, rendered from the brand-kit avatar: full mark on acid with its own
+margin), both at the web root where browsers and crawlers look by default, and
+linked them beside the SVG. The ICO is declared `sizes="32x32"` so browsers that
+support SVG keep choosing the SVG.
+
+The kit's 16 px frame was a straight downscale of the micro mark and blurred the
+eyes and nose into the face. Replaced it with a hand-placed 16 px drawing on whole
+pixels: same silhouette, two-pixel eyes, and an open two-by-two nose (the diamond
+cannot be drawn at that size; mark-process already allows limited detail at
+16 px). The brand kit's `favicon-16.png` and `favicon.ico` were updated to match;
+the 32 and 48 px frames, the SVG and every other asset are unchanged.
+
+Verification: compared three hand-drawn 16 px candidates against the current SVG
+render at real size on light and dark tab colors; checked that each ICO frame is
+byte-for-byte the intended image; loaded the page in Chromium and confirmed every
+icon link returns 200 with the right content type and no console errors. Chrome
+and Firefox still render the SVG in the tab, so on a standard-resolution screen
+they show the softer scaled SVG; the hand-drawn 16 px frame is what ICO-reading
+contexts (older Safari, Windows shortcuts, search results) see. Not checked on a
+real iPhone or on the deployed domain.
