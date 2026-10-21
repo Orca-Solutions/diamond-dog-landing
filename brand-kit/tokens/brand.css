@@ -1,0 +1,73 @@
+/* Diamond Dog v1 — brand proposal. Do not restyle fixed evaluation inspector screens. */
+:root {
+  --dd-ink: #17191B;
+  --dd-paper: #F4F0E8;
+  --dd-acid: #DFFF00;
+  --dd-lilac: #B8A4FF;
+  --dd-ember: #FF6B45;
+  --dd-font-sans: "Space Grotesk", system-ui, sans-serif;
+  --dd-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --dd-space-4: 4px;
+  --dd-space-8: 8px;
+  --dd-space-12: 12px;
+  --dd-space-16: 16px;
+  --dd-space-24: 24px;
+  --dd-space-32: 32px;
+  --dd-space-48: 48px;
+  --dd-space-64: 64px;
+  --dd-space-96: 96px;
+  --dd-radius-compact: 2px;
+  --dd-radius-panel: 8px;
+  --dd-motion-quick: 140ms;
+  --dd-motion-standard: 220ms;
+  --dd-ease: cubic-bezier(.2, 0, 0, 1);
+}
+:root, [data-dd-theme="light"] {
+  --dd-surface: #F4F0E8;
+  --dd-text: #17191B;
+  --dd-muted: #585650;
+  --dd-focus: #5635B0;
+  --dd-claimed-background: #E4EBF7;
+  --dd-claimed-foreground: #244877;
+  --dd-claimed-border: #3D6498;
+  --dd-observed-background: #DFEFE9;
+  --dd-observed-foreground: #18584C;
+  --dd-observed-border: #2E7767;
+  --dd-accepted-background: #EDE5FA;
+  --dd-accepted-foreground: #623D8B;
+  --dd-accepted-border: #78529F;
+  --dd-unknown-background: #E9E5DE;
+  --dd-unknown-foreground: #56524B;
+  --dd-unknown-border: #79736A;
+  --dd-error-background: #F8E4DE;
+  --dd-error-foreground: #8B3425;
+  --dd-error-border: #AD4937;
+}
+[data-dd-theme="dark"] {
+  --dd-surface: #17191B;
+  --dd-text: #F4F0E8;
+  --dd-muted: #B5B0A8;
+  --dd-focus: #DFFF00;
+  --dd-claimed-background: #202E41;
+  --dd-claimed-foreground: #B6CFF4;
+  --dd-claimed-border: #7D9EC9;
+  --dd-observed-background: #1C342F;
+  --dd-observed-foreground: #A7DCCA;
+  --dd-observed-border: #6CB09A;
+  --dd-accepted-background: #33273F;
+  --dd-accepted-foreground: #D8B9F4;
+  --dd-accepted-border: #AE87CE;
+  --dd-unknown-background: #302E2A;
+  --dd-unknown-foreground: #D7D0C4;
+  --dd-unknown-border: #A49B8D;
+  --dd-error-background: #41251F;
+  --dd-error-foreground: #FFBCAA;
+  --dd-error-border: #DA8C78;
+}
+/* Always render a visible label and symbol together. Do not convey meaning through colour alone. */
+/* Claimed/observed/accepted/unknown are distinct evidence labels, not steps. */
+/* Unknown may coexist with accepted; it is neither success nor error. */
+/* Recommended focus: outline: 3px solid var(--dd-focus); outline-offset: 3px; */
+@media (prefers-reduced-motion: reduce) {
+  :root { --dd-motion-quick: 0ms; --dd-motion-standard: 0ms; }
+}

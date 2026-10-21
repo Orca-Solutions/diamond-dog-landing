@@ -1,0 +1,12 @@
+{
+  "preview_url": "https://diamond-dog-coming-soon.ninjasoforca.chatgpt.site",
+  "audience": "owner-private",
+  "deployment_status": "succeeded",
+  "project_id": "appgprj_6ad8100b988081918ea5ff79dbd8de8c",
+  "version_id": "appgprj_6ad8100b988081918ea5ff79dbd8de8c~appgver_064d9b657e78819184746834e8133b6f",
+  "deployment_id": "appgdep_6ad813d7d01481918749e1e0a727d259",
+  "sites_source_commit": "b9885375f89e0eb58d04a044616e76d2543cb194",
+  "github_repository": "https://github.com/Orca-Solutions/diamond-dog-site",
+  "github_branch": "codex/diamond-dog-coming-soon",
+  "note": "GitHub source is separate from the Sites deployment mirror. The brand kit is kept outside the served site folder."
+}

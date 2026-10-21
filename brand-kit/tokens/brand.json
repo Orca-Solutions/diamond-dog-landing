@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "status": "Brand proposal; no changes to evaluation inspector",
+  "colors": {
+    "ink": "#17191B",
+    "paper": "#F4F0E8",
+    "acid": "#DFFF00",
+    "lilac": "#B8A4FF",
+    "ember": "#FF6B45"
+  },
+  "fonts": {
+    "sans": "Space Grotesk",
+    "mono": "IBM Plex Mono"
+  },
+  "spacingPx": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48,
+    64,
+    96
+  ],
+  "radiusPx": {
+    "compact": 2,
+    "panel": 8
+  },
+  "motionMs": {
+    "quick": 140,
+    "standard": 220,
+    "reduced": 0
+  },
+  "themes": {
+    "light": {
+      "surface": "#F4F0E8",
+      "text": "#17191B",
+      "muted": "#585650",
+      "focus": "#5635B0",
+      "states": {
+        "claimed": {
+          "background": "#E4EBF7",
+          "foreground": "#244877",
+          "border": "#3D6498",
+          "symbol": "“”",
+          "label": "Claimed"
+        },
+        "observed": {
+          "background": "#DFEFE9",
+          "foreground": "#18584C",
+          "border": "#2E7767",
+          "symbol": "◉",
+          "label": "Observed"
+        },
+        "accepted": {
+          "background": "#EDE5FA",
+          "foreground": "#623D8B",
+          "border": "#78529F",
+          "symbol": "↳",
+          "label": "Accepted"
+        },
+        "unknown": {
+          "background": "#E9E5DE",
+          "foreground": "#56524B",
+          "border": "#79736A",
+          "symbol": "?",
+          "label": "Unknown"
+        },
+        "error": {
+          "background": "#F8E4DE",
+          "foreground": "#8B3425",
+          "border": "#AD4937",
+          "symbol": "!",
+          "label": "Error"
+        }
+      }
+    },
+    "dark": {
+      "surface": "#17191B",
+      "text": "#F4F0E8",
+      "muted": "#B5B0A8",
+      "focus": "#DFFF00",
+      "states": {
+        "claimed": {
+          "background": "#202E41",
+          "foreground": "#B6CFF4",
+          "border": "#7D9EC9",
+          "symbol": "“”",
+          "label": "Claimed"
+        },
+        "observed": {
+          "background": "#1C342F",
+          "foreground": "#A7DCCA",
+          "border": "#6CB09A",
+          "symbol": "◉",
+          "label": "Observed"
+        },
+        "accepted": {
+          "background": "#33273F",
+          "foreground": "#D8B9F4",
+          "border": "#AE87CE",
+          "symbol": "↳",
+          "label": "Accepted"
+        },
+        "unknown": {
+          "background": "#302E2A",
+          "foreground": "#D7D0C4",
+          "border": "#A49B8D",
+          "symbol": "?",
+          "label": "Unknown"
+        },
+        "error": {
+          "background": "#41251F",
+          "foreground": "#FFBCAA",
+          "border": "#DA8C78",
+          "symbol": "!",
+          "label": "Error"
+        }
+      }
+    }
+  },
+  "usage": {
+    "outcomes": "Distinct evidence labels, not a progress ladder. Accepted may coexist with unknown delivery. Unknown is neither success nor error.",
+    "accessibility": "Always show state label plus symbol. Colour never carries meaning alone.",
+    "evaluation": "Do not restyle fixed evaluation inspector screens."
+  }
+}

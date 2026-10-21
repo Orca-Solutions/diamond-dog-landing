@@ -1,0 +1,32 @@
+DIAMOND DOG / VOICE IN ONE PAGE
+
+Delegate work, not your identity.
+a delegation-first operating environment
+
+HONEST. PLAIN-SPOKEN. WRY. CALM. ON YOUR SIDE.
+Write for capable people who already automate and hesitate to give software the keys to everything. Developers are a first audience alongside them. Recognise the hesitation without frightening anyone.
+
+SAY WHAT IS TRUE TODAY
+The design is written down. A first experiment is under way. Nothing has shipped. The intended environment runs on Linux. Apps, scripts and AI participants follow the same rules. Describe the design and the experiment; distinguish them from demonstrated results.
+
+MAKE THE ARRANGEMENT CONCRETE
+Say what a job may read, what it may change, and what needs the person's sign-off. Prefer a specific folder, message or action to a broad technical promise. Use access, grant, authority, bounded activity and participant. Explain unfamiliar terms once.
+
+LET THE RECORD BE PRECISE
+Keep claimed, observed, accepted and unknown distinct. Identify what the statement is based on. Unknown is an honest outcome, not a cheerful checkmark or a failure by default.
+“ The mail service accepted the message at 14:02. Delivery to the inbox was not observed. ”
+“ We don't know yet. Here's what we saw. ”
+Never imply that cancelling reverses an effect already sent to an outside service.
+
+PUT THE WINK IN THE RIGHT PLACE
+Website, README, stickers, docs asides and empty states can play. Aim the joke at overbroad access and unhelpful conventions. Never at a user or a neighbouring project. Approval, unknown outcomes, payments and personal records get sober, exact language.
+“ A little less blind faith. ”
+“ Quite particular about who gets to do what. ”
+“ Fetches what you sent it for. ”
+One wink at a time. The primary line remains the primary line.
+
+KEEP THE CHARACTER OURS
+A little artful independence; no lyrics, celebrity likenesses, signature makeup or album imagery. A working helper with a dry sense of humour. No threat theatre. No special status for AI. No claims the experiment has not earned.
+
+BEFORE PUBLISHING
+Check the actual state and scope. Keep the repository's OrcaOS name until the founder's name-check gate clears. Leave evaluation inspector screens as the protocol specifies. GPLv3 runtime; MIT SDK, interfaces and examples. The name and logo require a separate trademark policy.
