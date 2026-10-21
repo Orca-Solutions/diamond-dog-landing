@@ -89,3 +89,11 @@ horizontal overflow and no console warnings or errors. Production URLs
 were not checked from this environment.
 
 Review: author verification sufficient — static copy and layout only.
+
+## 2026-10-21 — Back to a single page
+
+After PR #4 merged, Jason asked for a single landing page only. Removed
+`updates.html`, `feed.xml` and their styles, and restored the closing panel's
+single "Explore the project" button. The hero's plain-benefit sentence and the
+taller desktop hero stay. A "Follow development" destination is deferred; an
+email list would need a mail-service account and Jason's choice of provider.
