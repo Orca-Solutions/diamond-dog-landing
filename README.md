@@ -26,13 +26,30 @@ The page has no signup collection, analytics, cookies, backend, or account integ
 
 ## Hosting
 
-The current review deployment is owner-private on ChatGPT Sites:
+The public production target is **https://diamonddog.orcasolutions.dev/**, using
+a separate Cloudflare Pages project named `diamonddog`. Only `site/` is served;
+the brand kit and repository documents stay outside the web root.
+
+Cloudflare configuration: Git source `Orca-Solutions/diamond-dog-landing`,
+production branch `main`, repository root, build command `exit 0`, output `site`.
+No dependency installation, application secret, backend or storage binding is
+needed. Once production is activated, pushes to `main` deploy automatically;
+other branches produce previews. An exact build/deployment receipt and the
+current activation status belong in the [DevOps hosting record](https://github.com/Orca-Solutions/dev-ops/blob/main/deployments/diamonddog/README.md).
+
+The earlier owner-private review deployment remains on ChatGPT Sites:
 
 https://diamond-dog-coming-soon.ninjasoforca.chatgpt.site
 
-GitHub pushes do not deploy this repository. The review deployment uses a separate Sites-managed source mirror. Only `site/` is served; the brand kit is not placed in the web root. A public launch, custom domain, and production hosting configuration remain separate choices. The static folder is portable to a static host; update the absolute Open Graph image URL when changing domains.
+That review deployment uses a separate Sites-managed source mirror; GitHub pushes
+do not update it. Production's canonical and Open Graph URLs use the public
+custom domain. Keep them aligned if the production hostname changes.
 
-To update the preview, copy the approved `site/` contents into the existing Sites project's static directory and publish through its supported workflow. To recover a prior appearance, restore `site/` from an approved earlier commit and redeploy that exact version. There is no database or user-submitted state to migrate.
+To update the private review, copy the approved `site/` contents into the existing
+Sites project's static directory and publish through its supported workflow.
+For production recovery, roll back to a previously accepted Pages deployment,
+then restore the corresponding source through the normal repository workflow.
+There is no database or user-submitted state to migrate.
 
 ## Brand and licensing
 
