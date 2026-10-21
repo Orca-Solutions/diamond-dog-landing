@@ -32,8 +32,6 @@ h1 { font-size: clamp(62px, 6.8vw, 98px); line-height: 1.02; letter-spacing: -.0
 .button { display: inline-flex; justify-content: center; align-items: center; gap: 30px; padding: 18px 23px; min-height: 56px; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 16px; font-weight: 500; border: 1px solid var(--ink); transition: background 140ms, color 140ms; }
 .button:hover { background: var(--acid); color: var(--ink); }
 .button span { font-size: 22px; line-height: 1; }
-.button.secondary { background: transparent; color: var(--ink); }
-.button.secondary:hover { background: var(--acid); }
 .hero-plain { max-width: 455px; margin-top: 18px; font-size: 18px; line-height: 1.55; letter-spacing: -.015em; }
 .hero .button { margin-top: 32px; }
 .hero-note { margin-top: 24px; font-size: 13px; color: var(--muted); line-height: 1.65; }
@@ -93,22 +91,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 .closing { display: flex; justify-content: space-between; gap: 40px; align-items: center; background: var(--lilac); padding: 45px 48px; }
 .closing > p { font-size: 42px; font-weight: 700; letter-spacing: -.055em; line-height: 1.1; }
 .closing > div { text-align: right; }
-.closing-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
 .closing > div > span { display: block; margin-top: 16px; font-size: 12px; }
-.updates { display: grid; grid-template-columns: 1fr 1.12fr; gap: 110px; padding: 72px 0 100px; }
-.updates .eyebrow { margin-bottom: 30px; }
-.updates h1 { font-size: clamp(44px, 5vw, 70px); line-height: 1.06; letter-spacing: -.055em; }
-.updates-intro { margin-top: 27px; max-width: 380px; font-size: 18px; line-height: 1.6; color: var(--muted); }
-.follow { margin-top: 40px; max-width: 380px; padding-top: 20px; border-top: 1px solid var(--ink); }
-.follow h2 { font-size: 23px; letter-spacing: -.04em; }
-.follow ul { margin: 16px 0 0; padding: 0; list-style: none; }
-.follow li { padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 16px; line-height: 1.5; }
-.follow li small { display: block; margin-top: 4px; font: 11px/1.6 Plex, monospace; color: var(--muted); }
-.notes { border-top: 1px solid var(--ink); }
-.note { padding: 27px 0 32px; border-bottom: 1px solid var(--rule); }
-.note time { font: 11px/1.5 Plex, monospace; letter-spacing: .06em; color: var(--muted); }
-.note h3 { margin: 14px 0 14px; }
-.note p { margin-top: 12px; max-width: 560px; font-size: 16px; line-height: 1.65; color: var(--muted); }
 .footer { min-height: 154px; display: flex; gap: 35px; justify-content: space-between; align-items: center; }
 .footer .home-link { width: 175px; }
 .footer p { color: var(--muted); font-size: 13px; }
@@ -126,7 +109,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .section-heading, .evidence-grid { gap: 48px; }
   .principles { gap: 30px; }
   .receipt { padding: 25px; }
-  .questions, .updates { gap: 60px; }
+  .questions { gap: 60px; }
 }
 @media (max-width: 1000px) {
   html { scroll-padding-top: 20px; }
@@ -166,9 +149,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .closing { display: block; padding: 30px 25px; }
   .closing > p { font-size: 39px; }
   .closing > div { text-align: left; margin-top: 28px; }
-  .closing-links { flex-direction: column; }
   .closing .button { width: 100%; justify-content: space-between; }
-  .updates { grid-template-columns: 1fr; gap: 34px; padding: 46px 0 66px; }
   .closing > div > span { font-size: 11px; line-height: 1.6; }
   .footer { flex-wrap: wrap; gap: 24px; padding: 38px 0; min-height: 0; }
   .footer p { order: 3; width: 100%; font-size: 12px; }
