@@ -62,3 +62,30 @@ and Firefox still render the SVG in the tab, so on a standard-resolution screen
 they show the softer scaled SVG; the hand-drawn 16 px frame is what ICO-reading
 contexts (older Safari, Windows shortcuts, search results) see. Not checked on a
 real iPhone or on the deployed domain.
+
+## 2026-10-21 — Clarity refinements from the brand review
+
+A brand review of the live page found no brand drift and suggested two clarity
+refinements. Jason asked for both without changing identity, colors, mascot or
+voice.
+
+The hero now adds one plain sentence under the descriptor: "The aim: let software
+edit your documents, send your mail or pay a bill, without handing it the keys to
+everything else." "The aim" keeps it honest that nothing has shipped. The hero's
+desktop minimum height grew from 765px to 830px so the rule below it no longer
+runs through the illustration caption.
+
+For a "Follow development" destination that needs no new account, added a static
+`updates.html` page with dated notes and a hand-written Atom feed (`feed.xml`).
+The closing section now leads with "Follow development" and keeps "Explore the
+project" as a secondary button. Still no signup collection, analytics, cookies or
+backend. An email list remains a later option and would need a mail service
+account, a privacy note and Jason's choice of provider.
+
+Verification: local HTTP 200 for both pages and the feed; feed parses as XML;
+1440, 1100, 1024, 800, 390 and 320px viewport inspection of both pages with no
+horizontal overflow and no console warnings or errors. Production URLs
+(`/updates`) rely on Cloudflare Pages' default extensionless HTML serving and
+were not checked from this environment.
+
+Review: author verification sufficient — static copy and layout only.

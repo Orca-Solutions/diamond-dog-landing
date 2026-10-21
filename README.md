@@ -22,7 +22,9 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory site
 
 Open `http://127.0.0.1:4173`. There is no dependency installation or build step. The page is HTML/CSS with a small JavaScript interaction explaining evidence labels. FAQ sections use native HTML disclosure controls.
 
-The page has no signup collection, analytics, cookies, backend, or account integration. The sample receipt is illustrative, not a product screenshot or a shipped workflow.
+`site/updates.html` holds short dated development notes, and `site/feed.xml` is the matching hand-written Atom feed; add a new entry to both when posting a note.
+
+The site has no signup collection, analytics, cookies, backend, or account integration. The sample receipt is illustrative, not a product screenshot or a shipped workflow.
 
 ## Hosting
 
