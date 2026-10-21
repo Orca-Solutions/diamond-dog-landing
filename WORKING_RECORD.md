@@ -12,4 +12,8 @@ Verification: local HTTP 200; JavaScript syntax check; desktop, 1024px tablet, 8
 
 Review: author verification sufficient — static presentation, copy, and local illustrative interactions; no custom authentication, payments, external writes, or sensitive-data handling.
 
-Delivery: new private repository `Orca-Solutions/diamond-dog-site`; implementation branch `codex/diamond-dog-coming-soon`. No automatic GitHub deployment is configured. Merge remains Jason's action. The owner-private Sites deployment is tracked in the delivery receipt beside this record. Public launch/domain and source/brand licensing remain unresolved choices, not implementation blockers for private review.
+Delivery: new private repository `Orca-Solutions/diamond-dog-landing`; implementation branch `codex/diamond-dog-coming-soon`. No automatic GitHub deployment is configured. Merge remains Jason's action. The owner-private Sites deployment is tracked in the delivery receipt beside this record. Public launch/domain and source/brand licensing remain unresolved choices, not implementation blockers for private review.
+
+## 2026-10-20 — Repository destination correction
+
+Jason requested `Orca-Solutions/diamond-dog-landing` as the delivery destination. The repository was empty; seeded its base from the original README-only baseline, then pushed the existing implementation and this signed reference correction on the working branch. Website and brand assets are unchanged, so the prior browser verification and private deployment remain applicable. The prior repository is retained; its PR is superseded by the PR in the requested destination.
