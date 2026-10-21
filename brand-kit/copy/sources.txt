@@ -1,0 +1,55 @@
+DIAMOND DOG / REFERENCES
+
+Primary project source
+Founder-supplied "Diamond Dog: creative brief", labeled 21 October 2026, plus
+the founder's feedback in this conversation. Product status, architecture,
+audience, license split, language constraints and rename gate follow that brief.
+No repository implementation audit was performed as part of this brand work.
+
+Design-process research
+Allan Peters / Sketch to Vector (public post)
+https://www.linkedin.com/posts/allanpeters_sketchtovector-logoprocess-logosketch-activity-6822128061622861824-JH_D
+
+Allan Peters / developing his studio identity (public post)
+https://www.linkedin.com/posts/allanpeters_one-of-the-most-difficult-things-to-do-as-activity-7328533151931138048-V6Hq
+
+Peters Design Company / Logos That Last (official book description)
+https://www.petersdesigncompany.com/book
+Only the public description and posts informed this work; the full book was not read.
+
+Fonts
+Space Grotesk / Florian Karsten
+https://github.com/floriankarsten/space-grotesk
+https://floriankarsten.github.io/space-grotesk/
+IBM Plex / IBM
+https://github.com/IBM/plex
+Distributed font files were obtained from Google Fonts' public repository:
+https://github.com/google/fonts/tree/main/ofl/spacegrotesk
+https://github.com/google/fonts/tree/main/ofl/ibmplexmono
+The corresponding SIL Open Font License texts are included in fonts/.
+
+Name discovery / existing associations, not a clearance conclusion
+David Bowie / Diamond Dogs
+https://www.davidbowie.com/diamond-dogs
+Konami / Diamond Dogs emblem
+https://www.konami.com/games/ca/en/topics/41/
+Intevac / historical annual report and filing mentioning DIAMOND DOG
+https://ir.intevac.com/download/companies/intevac/SEC/Annual%20Report%20%2818%29.pdf
+https://ir.intevac.com/download/companies/intevac/SEC/Intevac_10Q.pdf
+
+Mascot comparison requested by founder
+Disney / Lady and the Tramp official film page
+https://movies.disney.com/lady-and-the-tramp
+No Disney imagery was supplied to the image-generation tool. The final character
+uses the founder's personal dog photograph for anatomy and the original ink
+illustration for visual treatment. The private photograph is not distributed.
+
+Image-generation method
+Built-in image_gen. Final generation prompt: illustration/prompt-personal.txt.
+The mascot is an editorial illustration; the mark and wordmark are vector artwork.
+
+Accessibility
+Contrast ratios were calculated from the actual sRGB token values. The report
+records all pairs and thresholds. Contrast checks do not establish complete
+WCAG conformance for a future application; keyboard, semantics, focus behavior
+and assistive-technology use must be assessed in the implemented interface.

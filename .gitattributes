@@ -1,0 +1,6 @@
+*.pdf binary
+*.png binary
+*.ttf binary
+*.ico binary
+# Preserve unmodified third-party license notices.
+*OFL.txt -text -whitespace

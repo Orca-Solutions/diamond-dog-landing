@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>Diamond Dog — Delegate work, not your identity.</title>
+  <meta name="description" content="A delegation-first operating environment. Give software a specific job, clear limits, and a record of what happened. Open source. Coming soon.">
+  <meta property="og:title" content="Diamond Dog — Coming soon">
+  <meta property="og:description" content="Delegate work, not your identity. A delegation-first operating environment. First experiment under way.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://diamond-dog-coming-soon.ninjasoforca.chatgpt.site/assets/social.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/SpaceGrotesk-Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
+    <header class="header" id="top">
+      <a class="home-link" href="#top" aria-label="Diamond Dog home"><img src="assets/logo.svg" width="1687" height="256" alt="Diamond Dog"></a>
+      <nav aria-label="Main navigation"><a href="#idea">The idea</a><a href="#questions">A few questions</a></nav>
+      <span class="header-status"><span aria-hidden="true"></span> IN THE WORKS</span>
+    </header>
+  </div>
+  <main id="main">
+    <div class="shell">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="diamond" aria-hidden="true"></span> COMING SOON · OPEN SOURCE</p>
+          <h1 id="hero-heading">Delegate work,<br>not your identity.</h1>
+          <p class="hero-description">A delegation-first operating environment for giving software a job. And being quite particular about what else it may do.</p>
+          <a class="button" href="#idea">Meet Diamond Dog <span aria-hidden="true">↘</span></a>
+          <p class="hero-note">First experiment under way.<br>Good work takes a little groundwork.</p>
+        </div>
+        <figure class="hero-art"><img src="assets/dog.png" width="1536" height="1024" fetchpriority="high" alt="A sturdy black dog with folded ears and a diamond collar tag, carrying a very long receipt."><figcaption>FETCH THE WORK. BRING THE RECORD.</figcaption></figure>
+      </section>
+      <section class="idea" id="idea" aria-labelledby="idea-heading">
+        <div class="section-heading"><p class="eyebrow">01 / THE ARRANGEMENT</p><h2 id="idea-heading">A job should come<br>with a clear brief.</h2><p>You already know what you want the tool to do. The question is how much else you have to hand over.</p></div>
+        <div class="principles">
+          <article><span class="step">01</span><h3>Give it a specific job.</h3><p>A bounded activity defines what software may read, what it may change, and what needs your sign-off first.</p></article>
+          <article><span class="step">02</span><h3>Keep the scope in view.</h3><p>The inspector is designed to show what a job can still do, what you approved, and what cancelling would prevent.</p></article>
+          <article><span class="step">03</span><h3>Get the whole story.</h3><p>A record separates what was claimed, what was observed, what a service accepted, and what remains unknown.</p></article>
+        </div>
+      </section>
+    </div>
+  <section class="evidence" aria-labelledby="evidence-heading">
+    <div class="shell evidence-grid">
+      <div class="evidence-copy"><p class="eyebrow">02 / A LITTLE LESS BLIND FAITH</p><h2 id="evidence-heading">A receipt.<br>Including the<br><em>unknown</em> bits.</h2><p>Three contracts. One message. Your sign-off.</p><p class="subtle">In this design scenario, you choose the contracts, a tool summarizes them, and the exact email goes out only after your approval. The record says what was seen.</p><p class="example-label">ILLUSTRATIVE SCENARIO · NOT A SHIPPED WORKFLOW</p></div>
+      <div class="receipt-wrap">
+        <div class="receipt">
+          <div class="receipt-header"><span>ACTIVITY RECORD</span><span>014</span></div>
+          <h3>Send the contract summary.</h3>
+          <dl class="receipt-facts"><div><dt>Scope</dt><dd>3 selected documents</dd></div><div><dt>Action</dt><dd>1 reviewed email</dd></div><div><dt>Recipient</dt><dd>Your accountant</dd></div></dl>
+          <div class="evidence-controls" aria-label="Explore the example evidence">
+            <button class="evidence-row selected" type="button" data-evidence="accepted" aria-pressed="true" aria-controls="evidence-explanation"><span class="state accepted"><span aria-hidden="true">↳</span> Accepted</span><span>Mail service accepted the message.<small>14:02 · Service response recorded</small></span><span class="row-arrow" aria-hidden="true">↗</span></button>
+            <button class="evidence-row" type="button" data-evidence="unknown" aria-pressed="false" aria-controls="evidence-explanation"><span class="state unknown"><span aria-hidden="true">?</span> Unknown</span><span>Delivery to the inbox.<small>Not observed</small></span><span class="row-arrow" aria-hidden="true">↗</span></button>
+          </div>
+          <p id="evidence-explanation" class="receipt-explanation" aria-live="polite">The service accepted the request. That tells us something useful. It does not establish delivery.</p>
+          <div class="receipt-footer"><span>BOTH CAN BE TRUE.</span><span class="diamond" aria-hidden="true"></span></div>
+        </div>
+        <p class="receipt-caption">Select either statement to read what it means.</p>
+      </div>
+    </div>
+  </section>
+  <div class="shell">
+    <section class="questions" id="questions" aria-labelledby="questions-heading">
+      <div><p class="eyebrow">03 / FAIR QUESTIONS</p><h2 id="questions-heading">Still in<br>the workshop.</h2><p class="questions-intro">The design is written down. A first experiment is under way. Nothing has shipped yet.</p></div>
+      <div class="faq-list">
+        <details><summary>Can I try it yet?<span aria-hidden="true">+</span></summary><p>Not yet. We’re testing the design on existing platforms first. This page introduces the project; it isn’t an invitation to hand over an account.</p></details>
+        <details><summary>Is this just for AI?<span aria-hidden="true">+</span></summary><p>No. The same rules apply to apps, scripts and AI participants. Diamond Dog is about the arrangement for delegated work, whoever—or whatever—is doing it.</p></details>
+        <details><summary>Where will it run?<span aria-hidden="true">+</span></summary><p>The intended environment is an open-source layer on Linux: a headless runtime and an inspector for seeing what a job may still do and what happened. It isn’t a new desktop.</p></details>
+        <details><summary>What does cancelling mean?<span aria-hidden="true">+</span></summary><p>The design aims to make clear which future work cancellation would prevent. It cannot promise to reverse something that has already happened in an outside service.</p></details>
+      </div>
+    </section>
+    <section class="closing" aria-label="Project links"><p>Good work.<br>Clear boundaries.</p><div><a class="button" href="https://github.com/Orca-Solutions/OrcaOS" target="_blank" rel="noopener noreferrer">Explore the project <span aria-hidden="true">↗</span></a><span>The tool currently lives on GitHub as OrcaOS.</span></div></section>
+  </div>
+  </main>
+  <div class="shell">
+    <footer class="footer"><a class="home-link" href="#top" aria-label="Diamond Dog, back to top"><img src="assets/logo.svg" width="1687" height="256" alt="Diamond Dog"></a><p>A delegation-first operating environment.</p><a href="#top">Back to top ↑</a></footer>
+  </div>
+</body>
+</html>

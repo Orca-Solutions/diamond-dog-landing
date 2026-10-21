@@ -1,0 +1,94 @@
+DIAMOND DOG — STRATEGIC FOUNDATION, REVISED TO FOUNDER BRIEF
+Creative brief dated 21 October 2026 • supersedes initial strategy
+Role: strategy lead using an MBA-style business lens; no institutional affiliation implied.
+
+THE DECISION
+Build an honest, calm, slightly irreverent identity for people who already automate and hesitate to give a tool the keys to everything. Diamond Dog makes the arrangement understandable: what a job may do, what a person approved, what was observed, and what remains unknown. The name is settled. The brand is prelaunch; no product has shipped and the first experiment is still under way.
+
+APPROVED POSITIONING
+Diamond Dog is a delegation-first operating environment. It is being developed as an open-source layer on Linux: a headless runtime plus an inspector. The same rules apply to an app, a script or an AI participant. It is not currently a desktop or an operating system.
+
+PRIMARY LINE — KEEP
+Delegate work, not your identity.
+
+DESCRIPTOR — EXACT
+A delegation-first operating environment.
+
+SUPPORTING LINE — OPTIONAL CAMPAIGN USE
+Good work. Clear boundaries.
+This supports the primary line and does not replace it.
+
+BRAND INTRODUCTION
+Diamond Dog is a delegation-first operating environment being built to let software work on your behalf within a boundary you understand. A job has a scope: what it may read, what it may change, and what needs your sign-off first. Its record distinguishes what was reported, what was observed, and what is still unknown. The first experiment is under way on existing platforms.
+
+AUDIENCE ORDER
+First: hesitant automators — technically capable individuals and small teams of roughly 20 or fewer already using scripts, n8n, Zapier, Home Assistant, or AI tools. Their sentence is “This could save me time, but I don’t want to give it the keys to everything.” Brand response: recognition, calm control, a concrete arrangement; never fear-mongering.
+First alongside: developers building tools for the environment. Brand response: credibility, clarity, readable interfaces, an MIT SDK, and a project they would put their name next to.
+Ongoing: open-source contributors. Brand response: friendly collaboration, clear contribution routes, humour without an insider test.
+Later: anyone who delegates to software. General consumers, desktop shoppers, and operating-system researchers are not today’s launch audience.
+
+DISTINCTIVE IDEA
+Honesty is the most important differentiator. A record should tell a person what the system saw and what it could not see. It should prefer “unknown” over false confidence. This is a design intent under evaluation, not a proven performance or security claim.
+
+FOUR QUESTIONS THE BRAND MAKES LEGIBLE
+What can it still do?
+What exactly did I approve?
+What may have happened, including what is unknown?
+What will cancelling prevent?
+Do not suggest cancellation reverses an external action that already happened.
+
+EXAMPLE STORY — ILLUSTRATIVE DESIGN SCENARIO
+A person chooses three contracts. An unfamiliar tool summarizes them. An email to their accountant goes out only after they approve the exact message. The record can say “The mail service accepted it at 14:02; delivery to the inbox was not observed.” This scenario illustrates intended behaviour; it is not a shipped integration claim.
+
+OUTCOME LANGUAGE — DISTINCT, NOT A LADDER
+Claimed: a participant reports something; that report alone does not establish observation.
+Observed: evidence was actually seen; state exactly what evidence.
+Accepted: the named outside service acknowledged the submission; acceptance does not establish downstream delivery or completion.
+Unknown: available evidence does not establish an outcome; explain what was and was not seen.
+These categories are not four sequential progress steps, not an increasing confidence meter, and not universal mutually exclusive lifecycle statuses. A service acceptance may be observed while final delivery remains unknown. Visuals must preserve those distinctions. Unknown is neither success nor error. Pair state colour with a literal label and another cue such as an icon or border treatment.
+
+PERSONALITY
+Honest, plain-spoken, wry, calm, on your side.
+The dog is a working helper, never a guard or attack dog. The diamond can suggest clarity and structured facets. The founder’s proposed crash-survival interpretation is a design rationale to test, not a reliability promise to advertise before the experiment supports it.
+Subtle Bowie homage means independent taste and controlled eccentricity. No lyrics, song-title taglines, public Bowie name or likeness, lightning-bolt face motif, album cover references, or half-dog figure. Singular Diamond Dog has its own identity. Avoid military imagery and a dog-on-gem insignia with banner that would lean toward Metal Gear.
+
+VOICE
+Primary promise: “Delegate work, not your identity.”
+Explain with concrete scope: “Give it this folder, not your whole drive.”
+Be honest about evidence: “We don’t know yet. Here’s what we saw.”
+Allowed current claim: “We’re testing this on existing platforms first.”
+Allowed current claim: “Same rules for apps, scripts and AI.”
+The README, website, stickers, docs asides and empty states can have a wink. Approval, money, records and unknown outcomes use sober, exact language. Never punch at users or respected prior art such as Golem, Agent libOS, Temporal or Sandstorm.
+
+WORDS TO AVOID IN BRAND COPY
+Permission → access, grant, what it may do.
+Sandbox → bounded, scoped, only what you gave it.
+Undo → cancel, revoke or compensate, according to the actual meaning.
+Done → the actual state: sent, accepted, unknown, or the specific observation.
+Exactly once → no general claim; “won’t send it twice” only where demonstrated.
+Agent as a special class → participant; “AI participant” when relevant.
+Operating system for the current thing → delegation-first operating environment.
+Secure, proven, unique, safe, unhackable → describe the design and evidence instead.
+Do not claim stops rogue AI, eliminates prompt injection, never makes mistakes, reverses outside-world actions, or superiority over named neighbours.
+
+ARCHITECTURE AND NAMING
+Public brand: Diamond Dog, two words in title case, singular.
+Current repository, design documents and license headers: OrcaOS, retained until trademark and search checks are clean and the rename occurs.
+Do not rename the repo, files, package, CLI command, or legal headers through this branding task. CLI/domain/package short names remain unresolved.
+Functional nouns: activity, grant/authority, participant, record/receipt, inspector. Keep these understandable rather than building a family of dog-pun module names.
+At the eventual rename, change the README’s current “delegation-first operating system” descriptor to the approved “delegation-first operating environment.”
+
+OPEN SOURCE
+Founder-specified license split: GPLv3 runtime; MIT SDK, interfaces and examples. This is supplied project information, not independently verified against a repository in this task.
+Name and logo need a separate trademark usage policy; code licensing does not settle brand rights. Brand assets are intended for a public repository. Free, openly licensed fonts and reusable original assets are mandatory.
+
+LAUNCH PACKAGE AND EVALUATION BOUNDARY
+Supply mark/wordmark/lockup, monochrome and plain-text forms, light/dark palette, state-colour recommendations, openly licensed typography, one-page voice guide, README header, 1280×640 social preview, avatar, favicon and one landing-page concept.
+State-colour specifications are proposals for the brand system. The upcoming inspector evaluation uses fixed screens: do not restyle, replace or alter those screens before evaluation. Show any UI application only as a clearly labelled later concept.
+The public landing concept should foreground the primary line, exact descriptor, prelaunch status, a scoped-work scenario, and source/documentation routes. Do not invent install commands, available downloads, release dates, test results, or verified product claims.
+
+NAME LANDSCAPE — DISCOVERY ONLY
+Established album association: https://www.davidbowie.com/diamond-dogs
+Konami’s Diamond Dogs identity: https://www.konami.com/games/ca/en/topics/41/
+Intevac historical DIAMOND DOG mobile-screen-protector product: https://ir.intevac.com/download/companies/intevac/SEC/Annual%20Report%20%2818%29.pdf
+These are existing-use observations, not a legal status or conflict conclusion. The founder brief calls for checks covering software classes 9 and 42. Trademark ownership, territory, policy, domains, handles and package names remain to be settled before the repository rename. The name decision is retained while those checks proceed.

@@ -1,0 +1,155 @@
+DIAMOND DOG — VERBAL IDENTITY v2
+Aligned to the founder's creative brief. This replaces the earlier copy recommendations in full.
+
+CORE LOCKUP
+Diamond Dog
+a delegation-first operating environment
+
+PRIMARY LINE — KEEP AS SUPPLIED
+Delegate work, not your identity.
+
+SECONDARY SIGNATURE
+Good work. Clear boundaries.
+Use as an occasional campaign or merchandise line. It does not displace the primary line.
+
+THE POSITION
+For technically capable people and small teams who already automate but hesitate to give a tool the keys to everything. Developers building tools for the environment are a first audience alongside them. The brand recognises a practical hesitation and offers calm, specific explanations.
+
+PROJECT STATUS — REQUIRED CONTEXT
+The design is written down. A first experiment is under way. Nothing has shipped.
+Diamond Dog is being developed as an open-source layer on Linux: a headless runtime and an inspector for seeing what a job may still do and what happened. Apps, scripts and AI participants follow the same rules.
+
+LANDING-PAGE CONCEPT COPY
+Navigation: Design / First experiment / Contribute
+Eyebrow: OPEN SOURCE · FIRST EXPERIMENT UNDER WAY
+Headline: Delegate work,
+not your identity.
+Intro: A delegation-first operating environment for handing a piece of work to software with clear limits on what it may read, what it may change, and what needs your sign-off.
+Status: We're testing the design on existing platforms first. Nothing has shipped yet.
+Primary action: Read the design
+Secondary action: Follow the experiment
+Product line: Built for Linux. Same rules for apps, scripts and AI.
+
+Section: A job should come with a clear brief.
+Body: You already know what you want the tool to do. The question is how much else you have to hand over. Diamond Dog's design starts with the job and the authority it needs.
+
+Three principles
+01 / Give it a specific job.
+A bounded activity defines what software may read, what it may change, and what needs your sign-off first.
+02 / Keep the scope in view.
+The inspector is designed to show what an activity can still do, what you approved, and what cancelling would prevent.
+03 / Keep the unknowns visible.
+A record should separate what was claimed, what was observed, what an outside service accepted, and what remains unknown.
+
+Scenario label: DESIGN SCENARIO · NOT A SHIPPED WORKFLOW
+Scenario title: Three contracts. One message. Your sign-off.
+Scenario body: You select three contracts. An unfamiliar tool summarises them. The email to your accountant can go out only after you approve the exact message.
+Example record: The mail service accepted the message at 14:02. Delivery to the inbox was not observed.
+Caption: The experiment asks whether people can understand the scope, review the exact action, and read the result without guessing.
+
+Section: A little less blind faith.
+Body: We're testing an arrangement for useful work with visible limits. The design and experiment are open for inspection. Questions, careful criticism and useful contributions are welcome.
+Closing action: Explore the project
+License line: GPLv3 runtime. MIT SDK, interfaces and examples.
+Footer note: Diamond Dog is the product name. The repository and existing project documents currently retain OrcaOS while the name check is pending.
+
+README HEADER — PROPOSED FOR RENAME, NOT APPLIED NOW
+Diamond Dog
+a delegation-first operating environment
+Delegate work, not your identity.
+
+Diamond Dog is an open-source project exploring how to hand work to software through bounded activities: what a job may read, what it may change, what needs your sign-off, and a record of what happened.
+
+The design is written down and a first experiment is under way. Nothing has shipped. The intended environment runs on Linux as a headless runtime with an inspector. Apps, scripts and AI participants follow the same rules.
+
+Start with the design and the experiment. Contributions that make the arrangement clearer are welcome.
+
+GPLv3 runtime. MIT SDK, interfaces and examples.
+
+Editorial note: This header is an asset for the later rename. Do not change the current repository, license headers or existing design documents before the founder's name-check gate is satisfied. Do not invent repository links, command names, installation instructions or shipped integrations.
+
+PRELAUNCH ANNOUNCEMENT — REUSABLE DRAFT
+Meet Diamond Dog: a delegation-first operating environment.
+
+Delegate work, not your identity.
+
+We're working on an open-source layer for Linux that starts with a specific job: what software may read, what it may change, what needs your sign-off, and a record of what happened. The same rules apply to apps, scripts and AI participants.
+
+The design is written down. A first experiment is under way. Nothing has shipped yet.
+
+We want the record to tell you what was seen and what couldn't be seen. If a mail service accepted a message, that is what it should say. Whether it reached the inbox may still be unknown.
+
+Read the design, follow the experiment, and help us make delegated work easier to understand.
+
+A little less blind faith. A little more to go on.
+
+NAME TRANSITION LANGUAGE
+Diamond Dog is the product name. The repository, design documents and license headers retain OrcaOS while the trademark and search check is pending.
+Only after the founder confirms the rename: “OrcaOS is now Diamond Dog.”
+Do not publish a claimed repository rename, clearance result or availability of a command, package or domain that has not been confirmed.
+
+CAMPAIGN AND EDITORIAL LINES
+Core: Delegate work, not your identity.
+Secondary: Good work. Clear boundaries.
+Campaign: A little less blind faith.
+Editorial: A sensible system for unreasonable ideas.
+Community: Bring a useful idea. Leave a clear trail.
+Dog wink: Fetches what you sent it for.
+Dry aside: Quite particular about who gets to do what.
+Sticker: GOOD WORK. CLEAR BOUNDARIES.
+
+Use one wink at a time. The approved primary line carries the main proposition. Avoid stacking taglines.
+
+VOICE
+Honest. Plain-spoken. Wry. Calm. On your side.
+Write for a capable non-specialist. Name the concrete action and the limit. Separate a claim, an observation, an outside service's acceptance and an unknown. A record is evidence to inspect; it is not a blanket assurance.
+
+The humour points at overbroad access and unhelpful software conventions. Never mock the user or another project. Personality belongs in the website, README, stickers, docs asides and empty states. Approval screens, uncertain outcomes, payments and personal records stay sober and exact.
+
+Use: access; grant; authority; what it may do; bounded; scoped; participant; an AI participant when relevant; cancel, revoke or compensate only when that is the specific supported action.
+State the actual outcome. Preserve distinctions between claimed, observed, accepted and unknown. Do not collapse them into a generic success message.
+Use “we're designing,” “we're testing,” and “the experiment” where capability has not been demonstrated. Do not promote the current project into a full system or imply it has shipped.
+
+THREE EXAMPLES
+Marketing: Give it this folder, not your whole drive.
+Unknown: We don't know yet. Here's what we saw.
+Mail record: The mail service accepted the message at 14:02. Delivery to the inbox was not observed.
+
+OUTCOME LANGUAGE — DOCUMENTATION SPECIMENS ONLY
+These examples explain voice. They are not replacements for the inspector screens fixed by the evaluation protocol.
+
+Claimed
+A participant reports: “[specific result].”
+Label the speaker or source. Do not present a participant's report as independent observation.
+
+Observed
+Observed: [specific event] at [time], recorded by [source].
+Keep the statement within what that observation supports.
+
+Accepted
+[Service] accepted [specific request] at [time].
+[External result] was not observed.
+Acceptance by a service does not establish every later effect.
+
+Unknown
+The outcome is unknown. [Specific evidence available]. [Specific evidence missing].
+Example: The connection ended before a response was received. The service may have processed the request. Check the service before sending another request.
+
+Action review
+Review the exact action
+[Specific resource, action, recipient and amount where applicable.]
+State what the person is authorising, with no joke and no vague assurance.
+
+Scope explanation
+This activity may read [selected resources] and change [selected resource]. [Specified action] needs your sign-off first.
+Use only where the implementation actually enforces that arrangement.
+
+Cancellation explanation
+Cancelling prevents [specific future work]. [Already accepted external action] may still take effect.
+The explanation must follow the actual activity and service state. Do not promise that cancellation reverses an external effect.
+
+SCOPE OF THE HOMAGE
+Artful independence, slight irreverence and a little stage presence. The character belongs to Diamond Dog. Avoid lyric fragments, song-title slogans, celebrity names or likenesses, signature makeup motifs, album compositions, and military imagery. The name stays singular. Keep the visual wink subtle and the product language plain.
+
+COPY RELEASE CHECK
+Confirm that a sentence describes the written design, the current experiment or an evidenced result. Confirm current license wording with project files before publication. Keep the founder's repository rename gate. Keep evaluation inspector screens unchanged until the test protocol allows restyling. Use accurate labels and text in addition to colour. Do not make comparative, exclusive, safety, certainty, external-effect reversal or universal integration claims.

@@ -1,0 +1,59 @@
+DIAMOND DOG — WCAG 2.2 CONTRAST MEASUREMENTS
+Method: sRGB linearization (0.04045 threshold), relative luminance 0.2126R + 0.7152G + 0.0722B, (Llighter+0.05)/(Ldarker+0.05).
+Ratios rounded to two decimals for display; pass/fail uses full precision.
+Text target >=4.5:1. Meaningful nontext boundaries and focus target >=3:1.
+These measured pairs support AA colour contrast; complete accessibility also requires semantic, keyboard and assistive-technology testing in the implementing product.
+
+LIGHT
+Primary text / surface: #17191B / #F4F0E8 = 15.51:1; target 4.5:1; PASS
+Muted text / surface: #585650 / #F4F0E8 = 6.46:1; target 4.5:1; PASS
+Focus / surface: #5635B0 / #F4F0E8 = 7.30:1; target 3:1; PASS
+claimed text / badge background: #244877 / #E4EBF7 = 7.73:1; target 4.5:1; PASS
+claimed border / surface: #3D6498 / #F4F0E8 = 5.32:1; target 3:1; PASS
+claimed border / badge background: #3D6498 / #E4EBF7 = 5.04:1; target 3:1; PASS
+observed text / badge background: #18584C / #DFEFE9 = 6.96:1; target 4.5:1; PASS
+observed border / surface: #2E7767 / #F4F0E8 = 4.68:1; target 3:1; PASS
+observed border / badge background: #2E7767 / #DFEFE9 = 4.47:1; target 3:1; PASS
+accepted text / badge background: #623D8B / #EDE5FA = 6.72:1; target 4.5:1; PASS
+accepted border / surface: #78529F / #F4F0E8 = 5.27:1; target 3:1; PASS
+accepted border / badge background: #78529F / #EDE5FA = 4.90:1; target 3:1; PASS
+unknown text / badge background: #56524B / #E9E5DE = 6.19:1; target 4.5:1; PASS
+unknown border / surface: #79736A / #F4F0E8 = 4.13:1; target 3:1; PASS
+unknown border / badge background: #79736A / #E9E5DE = 3.74:1; target 3:1; PASS
+error text / badge background: #8B3425 / #F8E4DE = 6.55:1; target 4.5:1; PASS
+error border / surface: #AD4937 / #F4F0E8 = 4.88:1; target 3:1; PASS
+error border / badge background: #AD4937 / #F8E4DE = 4.53:1; target 3:1; PASS
+
+DARK
+Primary text / surface: #F4F0E8 / #17191B = 15.51:1; target 4.5:1; PASS
+Muted text / surface: #B5B0A8 / #17191B = 8.18:1; target 4.5:1; PASS
+Focus / surface: #DFFF00 / #17191B = 15.48:1; target 3:1; PASS
+claimed text / badge background: #B6CFF4 / #202E41 = 8.65:1; target 4.5:1; PASS
+claimed border / surface: #7D9EC9 / #17191B = 6.38:1; target 3:1; PASS
+claimed border / badge background: #7D9EC9 / #202E41 = 4.98:1; target 3:1; PASS
+observed text / badge background: #A7DCCA / #1C342F = 8.68:1; target 4.5:1; PASS
+observed border / surface: #6CB09A / #17191B = 6.98:1; target 3:1; PASS
+observed border / badge background: #6CB09A / #1C342F = 5.26:1; target 3:1; PASS
+accepted text / badge background: #D8B9F4 / #33273F = 8.10:1; target 4.5:1; PASS
+accepted border / surface: #AE87CE / #17191B = 6.01:1; target 3:1; PASS
+accepted border / badge background: #AE87CE / #33273F = 4.76:1; target 3:1; PASS
+unknown text / badge background: #D7D0C4 / #302E2A = 8.84:1; target 4.5:1; PASS
+unknown border / surface: #A49B8D / #17191B = 6.42:1; target 3:1; PASS
+unknown border / badge background: #A49B8D / #302E2A = 4.94:1; target 3:1; PASS
+error text / badge background: #FFBCAA / #41251F = 8.63:1; target 4.5:1; PASS
+error border / surface: #DA8C78 / #17191B = 6.72:1; target 3:1; PASS
+error border / badge background: #DA8C78 / #41251F = 5.30:1; target 3:1; PASS
+
+Ink text / acid: #17191B / #DFFF00 = 15.48:1; target 4.5:1; PASS
+Ink text / lilac: #17191B / #B8A4FF = 8.22:1; target 4.5:1; PASS
+Ink text / ember: #17191B / #FF6B45 = 6.25:1; target 4.5:1; PASS
+Ink text / paper: #17191B / #F4F0E8 = 15.51:1; target 4.5:1; PASS
+
+USAGE
+Use Ink text on Acid, Lilac and Ember. Do not use these bright accents as body text on Paper.
+State colour is always paired with a visible label and distinctive symbol. Symbols are decorative when the adjacent text label conveys the same meaning.
+Claimed: participant report. Observed: evidence seen. Accepted: named service acknowledged submission. Unknown: available evidence does not establish outcome. Error is separate.
+These evidence labels are not a progress ladder. An observed acceptance can coexist with unknown delivery. Unknown is neither success nor error.
+State tokens are a future styling proposal. Do not apply them to inspector screens fixed for the upcoming evaluation.
+A focus ring needs visible separation: recommended 3px ring with 3px offset against the theme surface. Validate any different adjacent colour.
+Motion is decorative only: 140ms for small changes, 220ms for transitions. Reduced motion disables both. No result is implied by animation.

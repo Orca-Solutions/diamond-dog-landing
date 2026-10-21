@@ -1,0 +1,51 @@
+DIAMOND DOG / ORIGINAL BRANDMARK RESEARCH + SPECIFICATION
+20 October 2026
+
+PROCESS REFERENCE, NOT AUTHORSHIP
+The referenced designer's name is Allan Peters (two l's). This original identity was developed by an AI design role using public process principles. Allan Peters / Peters Design Company did not create, approve, endorse, or participate in this work.
+
+Verified public process references
+1. Allan Peters, Sketch to Vector: https://www.linkedin.com/posts/allanpeters_sketchtovector-logoprocess-logosketch-activity-6822128061622861824-JH_D
+His own post describes fast, rough sketching to generate many ideas, followed by craft in the vector stage. Applied here: multiple compact symbol studies before choosing the front-facing companion. We used digital shape studies; do not claim these were hand-drawn.
+2. Allan Peters, development of his own studio identity: https://www.linkedin.com/posts/allanpeters_one-of-the-most-difficult-things-to-do-as-activity-7328533151931138048-V6Hq
+His own account describes developing 15 candidates, obtaining feedback, choosing a simple usable mark, and carrying its geometry into type, icons, and patterns. Applied here: compare variants, collect strategy feedback, then extend the chosen diamond cut into the wordmark's i-dot. We did not reproduce his full 15-candidate process.
+3. Peters Design Company, Logos That Last: https://www.petersdesigncompany.com/book
+Official book description supports concept-to-completion case studies and extension from a logo into a wider identity system. The full book was not available/read; do not claim its exact complete method was followed.
+4. https://www.petersdesigncompany.com/about
+The firm's own account emphasizes craft and getting to know each client. Applied here: product authority and receipts shape the brand meaning; avoid retro styling merely as imitation.
+
+CHOICE / THE SYMMETRICAL COMPANION
+A frontal dog with symmetrical rounded ears and mirrored angled folds. Calm circular eyes and an open diamond cut form the face. The tilted geometry gives personality, while the continuous silhouette remains easy to reproduce in one ink. The diamond is structural negative space, not a gem illustration or badge.
+
+Rationale: front-facing attention + approachable companion. The diamond cut is a mnemonic of the name and a repeatable geometric device. It is not a visual security guarantee. Symmetry gives the dog a calm, deliberate presence; the ear folds preserve an unmistakable canine silhouette. The original wordmark uses Space Grotesk Bold with optical spacing and a custom diamond i-dot. The diamond recurs exactly once in the wordmark so the reference stays restrained.
+
+ROUTES AND REVISION
+Original profile studies were rejected after strategic research flagged the existing Diamond Dogs military-emblem context. Three frontal routes were compared: a softer retriever, an asymmetric folded ear, and a more faceted head. The middle route was initially selected by the creative lead. After the user requested symmetry and diamond-ear exploration, the team compared the original, symmetrical angled folds, and symmetrical small diamond folds. The founder explicitly selected option 02, the symmetrical angled-fold route, as the first-edition production choice. All three studies are retained. Avoid presenting rejected studies as alternate official logos.
+
+PRODUCTION FILES
+logos/ contains 5 lockup families in 5 colorways, each in SVG and PNG:
+- mark: full-detail symbol
+- micro: ear cuts removed and eyes enlarged for small uses
+- wordmark: all text outlined; diamond i-dot
+- horizontal: preferred signature
+- stacked: centered compact signature
+Colorways: ink #17191B, true black #000000, paper #F4F0E8, true white #FFFFFF, acid #DFFF00.
+SVG files have transparent grounds, no external fonts, no filters, no strokes. Internal cutouts are genuinely transparent via evenodd fill. All silhouettes use editable paths. PNG files retain alpha. No SVG font dependency.
+
+USAGE
+Primary signature: ink on paper or paper on ink. Acid only on ink and with sufficient visual contrast. Do not use acid on white/paper. Use full symbol from 32px canvas up; micro at 16–31px canvas. Preferred app/avatar presentation at least 48px. Favicon-only 16px has limited detail by necessity. Horizontal lockup: minimum 240px digital width; standalone wordmark: minimum 140px. In print, test at actual output size; recommended horizontal width >=40mm, mark canvas >=8mm.
+Clear space: at least one diamond-nose width (48 grid units) on every side of the visible silhouette or wordmark. No other elements may enter this space. Asset canvas includes some padding but not the full clear space; add it in layout.
+Do not stretch, rotate the mark, outline it, close the nose, add a badge/shield/diamond surround, change ear proportions, add gradients to the mark, use glow or shadows, or replace the wordmark with ordinary typed text. Do not use the full detail icon at favicon size; choose micro.
+
+GEOMETRY
+Mark viewBox 0 0 256 256. Visible silhouette spans approximately x13.33 to242.67 and y40 to224. Nose diamond: top(128,136), right(152,160), bottom(128,184), left(104,160). Main eyes radius 9 centered(92,109)/(164,109); micro eyes radius 12 centered(92,108)/(164,108). The inner ear cuts are removed in micro. Primary mark's top/bottom span is 184 units. Curve extremities are part of the design, not a rigid all-angles grid.
+Wordmark original type: Space Grotesk variable at weight 700. Dot of lowercase i changed from circle to 86-unit-half-diagonal diamond centered(133,634) in its own glyph space. All glyphs converted to paths. Positive word-space adds 26 units over the global tracking adjustment; character advance reduced 12 units. Natural wordmark width 6306 font units. No claim of a newly designed full typeface.
+
+VISUAL VERIFICATION
+Rendered original candidate and final lockup PNGs and visually inspected. Final symmetrical horizontal composition centers dog and wordmark optically; diamond dot and nose remain recognizable. Micro version inspected at 16 and 24px, full version at 32/48/64/96px. All final SVGs rasterized successfully. Stacked wordmark scaling corrected to fit the canvas (0.11; width 693.66 in 800px viewBox).
+
+SYMMETRY REVISION
+Selected route: ear-studies/02-symmetric.svg. Outer contour and angled ear cuts are mirrored around x = 128. Nose and eye positions are unchanged. Micro uses the same symmetrical outer contour with ear cuts removed and enlarged eyes. All 50 production logo exports and every application were regenerated; the custom diamond i-dot and wordmark outlines remain unchanged. Earlier asymmetric production versions are preserved only as working studies outside the production kit.
+
+DESCRIPTOR SIGNATURES
+Founder-confirmed option 02. Additional ink and paper descriptor signatures pair the outlined horizontal logo with the exact lowercase descriptor “a delegation-first operating environment”, set in outlined IBM Plex Mono. The descriptor aligns to the wordmark left edge, with 81 canvas units between the logo canvas bottom and descriptor baseline; total viewBox 1783.32×430. Minimum recommended width 480px for descriptor readability; use ordinary horizontal lockup below 480px. Signature exports added in SVG and transparent PNG; existing assets unchanged.

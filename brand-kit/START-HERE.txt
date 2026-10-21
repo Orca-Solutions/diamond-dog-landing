@@ -1,0 +1,68 @@
+DIAMOND DOG / BRAND KIT v1
+Delegate work, not your identity.
+a delegation-first operating environment
+
+START WITH
+Diamond-Dog-Brand-Book.pdf
+A 22-page visual guide covering positioning, identity, color, type, outcome states,
+illustration, voice, a landing-page concept, applications and practical handoff.
+The PDF has a clickable document outline and linked source references.
+
+THE CURRENT DIRECTION
+Symmetrical dog ears, a transparent diamond nose and an outlined wordmark with a
+diamond i-dot. Ink and warm paper carry the identity; acid and lilac add character.
+The editorial mascot uses the founder's dog's proportions in black ink, with a
+narrow acid collar and a single lilac diamond tag. No bow tie.
+
+WHAT IS WHERE
+logos/       Outlined vector SVGs and transparent PNGs in five colorways.
+             mark: 32px and larger; micro: 16-31px.
+             horizontal: preferred signature; stacked: compact contexts.
+             wordmark: name-only applications. Minimum width 140px.
+applications/ Social preview 1280x640; GitHub header 1600x480; avatar 512x512;
+             favicon SVG, PNG and ICO; campaign poster; sticker; terminal text;
+             standalone landing concept and voice-guide previews.
+illustration/ receipt-dog-personal.png is the current mascot. Prompt and usage
+             notes document the built-in image-generation method and references.
+fonts/       Space Grotesk 400/500/700 and IBM Plex Mono 400, with OFL licenses.
+tokens/      CSS/JSON design values, optional font loading, and a contrast report.
+copy/        Positioning, verbal identity, one-page voice guide and mark process.
+
+QUICK RULES
+Use the supplied logo paths. Do not retype, stretch, rotate, outline or add effects.
+Keep one nose-diamond width of clear space outside the visible logo bounds.
+Use ink on paper, paper on ink, or acid on ink. Bright accents need ink text.
+Use the micro mark for the smallest icon sizes; full-size details will disappear.
+Pair state colors with a visible label and distinctive symbol. Unknown is neutral.
+Claimed, observed, accepted and unknown are evidence labels, not a progress ladder.
+The primary line stays primary. Good work. Clear boundaries. is secondary.
+Use access, grant, authority, and what it may do for the delegation model.
+
+STATUS AND RELEASE
+This is a first-edition brand direction, not a claim that the software has shipped.
+The design is written down and a first experiment is under way. The intended
+environment is a Linux layer with a headless runtime and inspector.
+The fixed evaluation inspector screens have not been changed; outcome tokens
+are guidance for later styling. The landing page is a static concept, not a site.
+The repository, design documents and license headers retain OrcaOS pending the
+founder's name-check gate. This kit has not published or renamed anything.
+
+LICENSING AND PRODUCTION
+The founder brief specifies GPLv3 runtime and MIT SDK, interfaces and examples.
+Those software licenses do not automatically license the name or logo. No new
+brand-asset license or trademark policy is set by this kit. The founder should
+choose the usage policy and holder before inviting public redistribution.
+Font licenses are included beside the font files. Preserve them when redistributing.
+SVG and PNG masters are RGB. For print, use true-black one-ink logo files or
+obtain a CMYK/spot-color proof from the printer. No untested Pantone match is claimed.
+The mascot is 1536x1024 pixels: about 5.12x3.41 inches at 300ppi. Use a suitably
+sized reproduction; request a larger master for large print work.
+Sticker and poster files are artwork masters, not vendor-specific dielines.
+
+PROVENANCE
+An AI creative team developed original work using public process references and
+the founder's brief and feedback. Allan Peters and Wharton did not participate
+or endorse the work. The mascot reference photo remains private and is excluded.
+Original character and mark studies are kept outside the main kit so they cannot
+be mistaken for the selected production identity.
+Full references and process details: copy/mark-process.txt and copy/sources.txt.

@@ -1,0 +1,6 @@
+Diamond Dog
+a delegation-first operating environment
+
+Delegate work, not your identity.
+
+First experiment under way.

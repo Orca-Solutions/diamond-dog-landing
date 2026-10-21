@@ -1,0 +1,11 @@
+RECEIPT DOG - PERSONAL CHARACTER EDITION
+
+Recommended editorial mascot direction. Original artwork inspired by the founder's own dog: sturdy body, broad blunt muzzle, naturally folded ears, calm knowing expression. The black ink treatment is a brand choice, not the dog's real coat color.
+
+Character constants: broad muzzle, folded triangular ears with slight asymmetry, sturdy broad-chested body, short-haired silhouette, quiet side-eye. Narrow chartreuse collar with one lilac diamond-shaped tag. Never a bow tie. No invented white chest patch.
+
+Use at large sizes in launch/editorial/community work. Keep the full dog and blank receipt curl visible. The receipt is a metaphor, not a real product screenshot. Functional action-review, error, and verification screens should stay calm and literal.
+
+Original output: 1536 x 1024 PNG, opaque warm cream paper background, screen RGB. Print proofing required for color matching. AI-generated with image_gen using user-supplied photo as reference; no third-party character image was supplied. This design direction does not constitute a legal originality or trademark clearance opinion.
+
+The original terrier and v2 are exploration assets; use receipt-dog-personal.png for the current brand direction. Do not distribute the user's original photo with the kit.
