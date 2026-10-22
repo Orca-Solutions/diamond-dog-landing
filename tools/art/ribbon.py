@@ -387,7 +387,7 @@ def svg(quads, P, Z, S, printed_sign):
             e += rel([sh(near[0]), sh(far[0])])
         if hi == last or quads[hi + 1]['facing'] != quads[hi]['facing']:
             e += rel([sh(near[-1]), sh(far[-1])])
-        out.append('<path class="rib-edge" d="%s"/>' % e)
+        out.append('<path class="rib-edge" fill="none" d="%s"/>' % e)
         for m, text, alpha in rows_after.get(k, []):
             a_, b_, c_, d_, e_, f_ = m
             op = '' if alpha >= 1 else ' opacity="%s"' % g3(alpha)
@@ -417,4 +417,7 @@ if __name__ == '__main__':
     s, n = re.subn(r'\.receipt-ribbon \{ position: absolute; top: 0; [^}]*\}', lambda m: rule, css.read_text(), count=1)
     assert n == 1
     css.write_text(s)
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    import stamp_assets                     # the stylesheet changed, so its link must too
+    stamp_assets.stamp()
     print(rule)

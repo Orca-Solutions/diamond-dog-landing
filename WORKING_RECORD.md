@@ -280,3 +280,24 @@ Verification: Chromium renders of the receipt section at 1101, 1300, 1440 and
 ribbon clears the eyebrow by 67 px, the heading lines by 49, 51 and 57 px, and
 ends 34 px under the card (22 px at 1101). Not checked with a screen reader or
 on the deployed domain.
+
+## 2026-10-22 — Live page paired with an old stylesheet
+
+Right after PR #7 merged, Jason saw the live page with giant solid black dogs,
+a black blob through the receipt and the header dog not hiding on scroll. The
+page HTML was new but `styles.css` and `script.js` were the old ones: the
+symptoms match the pre-#7 stylesheet exactly (no ink header, the ribbon in the
+grid flow, unstyled SVG fills). The page is fetched fresh, but the stylesheet
+and script can be kept by the browser or the host's edge cache. This
+container cannot reach the live domain, so the cache headers themselves were
+not inspected.
+
+Fix: the stylesheet and script links now carry a content hash
+(`styles.css?v=<hash>`), written by `tools/stamp_assets.py`, so any change to
+either file changes its URL. `tools/art/ribbon.py` runs the stamp itself. The
+drawings also got safe defaults in case a stylesheet is ever missing: a width
+attribute on each dog SVG (its desktop size) and `fill="none"` on the
+receipt's outline paths, so they degrade to small shapes instead of filling the
+page. Rendering with the stylesheet is unchanged (full-page renders at 1440,
+900 and 390 px match main pixel for pixel, apart from the tail-wag animation
+frame); with the stylesheet blocked, every dog stays at its normal size.

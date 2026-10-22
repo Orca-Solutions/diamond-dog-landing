@@ -24,3 +24,6 @@ Needs Python 3.9+ and shapely 2 (`pip install shapely`). Run from the repository
 
 Check the receipt section at 1440 px and around 1100 px after changing either file: the ribbon
 should clear the copy and slide under the card, and it is hidden below 1100 px.
+
+`ribbon.py` also runs `tools/stamp_assets.py`, because it rewrites the stylesheet; `dogs.py`
+only touches `index.html`, so it doesn't need to.

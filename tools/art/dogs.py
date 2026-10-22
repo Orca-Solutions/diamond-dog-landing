@@ -151,7 +151,7 @@ def sit():
             '<circle cx="91.5" cy="54.5" r="2.4"/><circle cx="115.5" cy="54.5" r="2.4"/>'
             '<path class="dog-bg" d="M102 72 l8 8 l-8 8 l-8 -8 z"/></g>')
     band = collar(((42, 94), (62, 108), (98, 112), (122, 95)), 4.6, shape(SIT_BODY, SIT_NECK))
-    return ('<svg class="dog dog-sit" viewBox="0 0 160 190" aria-hidden="true" focusable="false">'
+    return ('<svg class="dog dog-sit" viewBox="0 0 160 190" width="120" aria-hidden="true" focusable="false">'
             + body + band + head + '</svg>')
 
 
@@ -172,7 +172,7 @@ def dig():
              '<g class="dog-tail" style="transform-origin:202px 88px"><path d="M200 90 Q206 62 226 48 Q232 52 224 62 Q214 76 212 96 Z"/></g>',
              band,
              '<path d="M16 112 l7 -4 l2 7 z M30 98 l6 -5 l4 7 z M8 126 l6 0 l-1 6 z M44 92 l3 -5 l4 4 z"/>']
-    return ('<svg class="dog dog-dig" viewBox="0 0 240 150" aria-hidden="true" focusable="false">'
+    return ('<svg class="dog dog-dig" viewBox="0 0 240 150" width="300" aria-hidden="true" focusable="false">'
             + ''.join(parts) + '</svg>')
 
 
@@ -197,7 +197,7 @@ def rest(tilt=-6, look=1.6):
              '<path d="M36 118 L36 110 Q36 102 46 102 L80 102 Q88 102 90 110 L90 118 Z M78 118 L78 110 Q78 102 88 102 L120 102 Q128 102 130 110 L130 118 Z"/>',
              '<path class="dog-line" d="M47 118 V112 M58 118 V112 M69 118 V112 M99 118 V112 M110 118 V112 M121 118 V112"/>',
              head]
-    return ('<svg class="dog dog-rest" viewBox="0 0 264 122" aria-hidden="true" focusable="false">'
+    return ('<svg class="dog dog-rest" viewBox="0 0 264 122" width="250" aria-hidden="true" focusable="false">'
             + ''.join(parts) + '</svg>')
 
 
