@@ -190,3 +190,23 @@ section where it already colours the eyebrow, and the receipt title keeps its
 lilac "unknown" without a second lilac beside it. The stop is a `<span class="stop">`
 inside the heading, so screen readers still read the sentence; swapping the
 colours is two lines in `styles.css`.
+
+## 2026-10-22 — Looping receipt and the hanging dog, second pass
+
+Jason wanted the receipt ribbon more three-dimensional, looping over itself,
+and only filling the gap rather than running edge to edge; and the header dog
+read as upside down to him, so he asked for the head flipped with the pupils
+still looking down.
+
+The ribbon is now generated geometry (a torn top edge, a short fall, one loop
+that crosses over itself, then a fall into a curl) rendered as flat quads with
+a shade that darkens as the paper turns sideways and a warmer tone where it
+climbs and shows its back, thin ink edges, and print lines across the straight
+runs. The generator is a short Python script kept with the working notes of
+this change, not in the repository; the output is the inline SVG in
+`index.html`. It sits at 37% from the left, 120 px down, and hides below
+1100 px. The header dog now hangs by his paws with his head upside down and
+his pupils toward the page.
+
+Verification: 1440 px screenshots of the receipt section and the header at
+the top of the page; the loop clears the copy and the card at that width.
