@@ -42,7 +42,7 @@ h1 { font-size: clamp(62px, 6.8vw, 98px); line-height: 1.02; letter-spacing: -.0
 .hero-note { margin-top: 24px; font-size: 13px; color: var(--muted); line-height: 1.65; }
 .hero-art { position: absolute; z-index: 0; width: 65%; right: -4%; top: 210px; }
 .hero-art img { mix-blend-mode: multiply; mask-image: linear-gradient(90deg,transparent,black 5%,black 95%,transparent); }
-.hero-art figcaption { text-align: center; margin-top: -3px; font: 10px/1.5 Plex, monospace; letter-spacing: .06em; color: var(--muted); }
+.hero-art figcaption { text-align: right; padding-right: 6%; margin-top: -3px; font: 10px/1.5 Plex, monospace; letter-spacing: .06em; color: var(--muted); }
 .idea { padding: 76px 0 104px; border-top: 1px solid var(--rule); }
 .section-heading { display: grid; grid-template-columns: 1fr 1fr; column-gap: 80px; }
 .section-heading .eyebrow { grid-column: 1/-1; margin-bottom: 25px; }
@@ -112,7 +112,8 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 .dog .dog-collar-edge { fill: var(--ink); }
 .dog .dog-ring { fill: none; stroke: var(--dog-metal); }
 .dog .dog-tag { fill: var(--lilac); stroke: var(--dog-metal); stroke-linejoin: round; }
-.dog-peek { position: absolute; z-index: 1; left: 36%; bottom: 0; width: 150px; }
+.idea { position: relative; }
+.dog-peek { position: absolute; z-index: 1; left: 51%; bottom: 0; width: 150px; }   /* peeks over the dark section below */
 .dog-peek .dog-eyes, .dog-hang .dog-eyes { animation: dog-glance 9s ease-in-out infinite; }
 .dog-hang { position: absolute; left: 50%; top: 100%; width: 84px; color: var(--ink); transition: transform 220ms ease; }
 .dog-hang .dog-eyes { animation-delay: 4s; }
@@ -122,6 +123,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 .receipt-ribbon { position: absolute; top: 0; left: 10.076%; width: 47.500%; margin-top: -6.515%; height: auto; pointer-events: none; user-select: none; }
 .receipt-ribbon .rib-edge { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .receipt-ribbon text { font-family: Plex, monospace; fill: #4a463f; }
+.receipt-ribbon-stacked { display: none; }
 .dog-sit-wrap { position: absolute; left: max(56px, calc(50% - 660px)); bottom: 0; display: flex; align-items: flex-end; gap: 22px; color: var(--paper); }
 .dog-sit { width: 120px; --dog-bg: var(--ink); --dog-metal: var(--ink); }
 .dog-sit-wrap figcaption { margin-bottom: 20px; font: 10px/1.6 Plex, monospace; letter-spacing: .06em; color: #b5b0a8; }
@@ -149,8 +151,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .principles { gap: 30px; }
   .receipt { padding: 25px; }
   .questions { gap: 60px; }
-  .dog-peek { left: auto; right: 24px; width: 120px; }
-  .receipt-ribbon { display: none; }
+  .dog-peek { width: 120px; }
   .dog-rest { width: 170px; margin: 0 12px -45px; }
 }
 @media (max-width: 1000px) {
@@ -171,7 +172,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .hero-note { font-size: 12px; }
   .hero-art { position: relative; top: auto; right: auto; width: calc(100% + 30px); max-width: 600px; margin: 16px -15px 0; }
   .hero-art figcaption { font-size: 8px; margin-top: -9px; }
-  .dog-peek { right: 0; width: 88px; }
+  .dog-peek { left: auto; right: 0; width: 88px; }
   .idea { padding: 55px 0 64px; }
   .section-heading { display: block; }
   h2 { font-size: 42px; }
@@ -196,6 +197,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .dog-dig-wrap { width: 220px; margin: 28px 0 0; }
   .dog-dig { width: 220px; }
   .receipt-ribbon { display: none; }
+  .receipt-ribbon.receipt-ribbon-stacked { display: block; left: calc(470px + min(100% - 470px, 390px) * -0.0026); width: calc(min(100% - 470px, 390px) * 0.4410); top: 475px; margin-top: calc(min(100% - 470px, 390px) * -1.2846); }
   summary { font-size: 19px; }
   .closing { display: block; padding: 30px 25px; }
   .closing > p { font-size: 39px; }
@@ -206,6 +208,9 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .footer { flex-wrap: wrap; gap: 24px; padding: 38px 0; min-height: 0; }
   .footer p { order: 3; width: 100%; font-size: 12px; }
   .dog-paws { display: none; }
+}
+@media (max-width: 739px) {
+  .receipt-ribbon.receipt-ribbon-stacked { display: none; }   /* no room beside the copy */
 }
 @media (max-width: 370px) {
   h1 { font-size: 36px; }

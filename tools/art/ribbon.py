@@ -61,18 +61,58 @@ PAPER = (0xF4, 0xF0, 0xE8)
 BACK = (0xDD, 0xD7, 0xCC)
 AMBIENT = 0.80
 TONES = ((0.95, 1.0), (0.82, 0.92), (0.0, 0.84))   # flat tones, cartoon style: (from light, brightness)
-CARD_EDGE = (713.0, -0.0207)   # the receipt card's left edge: x = a + b * (y + 6)
+CARD = ('left', 713.0, -0.0207)   # where the paper goes under the receipt card: its left edge,
+                                  # x = a + b * (y + 6), or ('top', y) for its top edge
 SHADOW = 26.0                  # how far the card's shadow reaches onto the ribbon, px
+CLASS = 'receipt-ribbon'
+ID = 'rib'                     # prefix for its gradient ids, unique on the page
+MARGIN = 0.08                  # print margin, fraction of the width
+MIN_FACING = 0.32              # no print once the paper turns this edge-on
+MAX_BEND = 0.04                # nor where it curls tighter than this (1/px)
 
-W3 = math.sqrt(B[0]**2 + B[1]**2 + BZ**2)    # the paper's true width
-MARGIN = 0.08                                 # print margin, fraction of the width
-FONT = (1 - 2*MARGIN) * W3 / (COLS * 0.6)     # Plex Mono advances 0.6 em
-LEAD = 1.5 * FONT                             # line pitch along the paper
-CAP = 0.7 * FONT
-MIN_FACING = 0.32                             # no print once the paper turns this edge-on
-MAX_BEND = 0.04                               # nor where it curls tighter than this (1/px)
-BN = math.hypot(*B)
-ACROSS = (B[1] / BN, -B[0] / BN)              # unit vector perpendicular to B on screen
+# The narrow-screen ribbon, for the stacked layout (copy above the card, under 1000 px). Its
+# geometry is in evidence-grid px at a 900 px viewport: it fills the space right of the copy,
+# coils, and drops behind the card's top edge. The CSS scales it with the free width.
+STACKED = dict(
+    START=(512.0, 10.0),
+    HEADING=-31.4,
+    PIECES=[
+        (80, -0.106, -0.025),
+        (40, -0.025, 0.000),
+        (30, 0.000, 0.003),
+        (30, 0.003, 0.026),
+        (223, 0.026, 0.026),   # one coil
+        (40, 0.026, 0.010),
+        (100, 0.010, 0.008),   # swinging round to hang straight down, behind the card
+        (400, 0.0, 0.0),
+    ],
+    COIL=(175.0, 435.0, 1.1),
+    B=(-36.0, 28.0),           # flatter than the wide ribbon's, so the paper stays broad as it hangs
+    BZ=34.0,
+    CARD=('top', 475.0),
+    CLASS='receipt-ribbon receipt-ribbon-stacked',
+    ID='ribs',
+)
+FREE, WIDE_AT = 470.0, 860.0   # the stacked ribbon's space starts 470 px in; designed for an 860 px grid
+
+
+def derive():
+    """Recompute the values that follow from the paper's width."""
+    global W3, FONT, LEAD, CAP, BN, ACROSS
+    W3 = math.sqrt(B[0]**2 + B[1]**2 + BZ**2)  # the paper's true width
+    FONT = (1 - 2*MARGIN) * W3 / (COLS * 0.6)   # Plex Mono advances 0.6 em
+    LEAD = 1.5 * FONT                           # line pitch along the paper
+    CAP = 0.7 * FONT
+    BN = math.hypot(*B)
+    ACROSS = (B[1] / BN, -B[0] / BN)            # unit vector perpendicular to B on screen
+
+
+def use(variant):
+    globals().update(variant)
+    derive()
+
+
+derive()
 
 
 def norm3(v):
@@ -115,8 +155,18 @@ def drift(s):
     return widths * W3 * t * t * (3 - 2 * t)
 
 
-def card_x(y):
-    return CARD_EDGE[0] + CARD_EDGE[1] * (y + 6)
+def card_gap(x, y):
+    """How far a point is outside the card, across its edge (negative: under it)."""
+    if CARD[0] == 'left':
+        return CARD[1] + CARD[2] * (y + 6) - x
+    return CARD[1] - y
+
+
+def hidden(x, y):
+    """Is this whole cross-section (centre x, y) well under the card?"""
+    if CARD[0] == 'left':
+        return min(x - abs(B[0])/2, x + B[0]/2) > CARD[1] + CARD[2] * (y + 6) + 34
+    return min(y - abs(B[1])/2, y + B[1]/2) > CARD[1] + 34
 
 
 def build():
@@ -127,7 +177,7 @@ def build():
     c = [(x + B[0] * d / W3, y + B[1] * d / W3) for (x, y), d in zip(c, h)]
     # stop once the whole width is well under the card
     for i, (x, y) in enumerate(c):
-        if min(x - abs(B[0])/2, x + B[0]/2) > card_x(y) + 34 and i > len(c) // 2:
+        if hidden(x, y) and i > len(c) // 2:
             c, ks, h = c[:i+1], ks[:i], h[:i+1]
             break
     b3 = (B[0], B[1], BZ)
@@ -154,7 +204,7 @@ def build():
         light = AMBIENT + (1 - AMBIENT) * max(0.0, dot3(nv, L)) * 1.25
         light *= 0.82 + 0.18 * min(1.0, abs(n[2]) * 1.6)   # darker as it turns edge-on
         mid = ((a[0]+b[0])/2 + B[0]/2, (a[1]+b[1])/2 + B[1]/2)
-        gap = card_x(mid[1]) - mid[0]
+        gap = card_gap(*mid)
         if -SHADOW < gap < SHADOW:                           # the card's shadow, just before it
             light *= 1 - 0.16 * (1 - max(0.0, gap) / SHADOW)
         quads.append(dict(i=i, facing=facing, front=front, light=light, nz=abs(n[2]),
@@ -376,10 +426,10 @@ def svg(quads, P, Z, S, printed_sign):
         else:
             a = sh(near[0])
             b = (a[0] + ACROSS[0] * (t1 - t0), a[1] + ACROSS[1] * (t1 - t0))
-            defs.append('<linearGradient id="rib%d" gradientUnits="userSpaceOnUse" x1="%s" y1="%s" x2="%s" y2="%s">%s</linearGradient>' % (
-                k, g(a[0]), g(a[1]), g(b[0]), g(b[1]),
+            defs.append('<linearGradient id="%s%d" gradientUnits="userSpaceOnUse" x1="%s" y1="%s" x2="%s" y2="%s">%s</linearGradient>' % (
+                ID, k, g(a[0]), g(a[1]), g(b[0]), g(b[1]),
                 ''.join('<stop offset="%s" stop-color="%s"/>' % (g3(max(0, min(1, o))), colour(base, l)) for o, l in stops)))
-            fill = 'url(#rib%d)' % k
+            fill = 'url(#%s%d)' % (ID, k)
         out.append('<path fill="%s" d="%sz"/>' % (fill, rel(ring)))
         # the long edges, the receipt's cut ends and the folds where it turns over
         e = rel([sh(p) for p in near]) + rel([sh(p) for p in far])
@@ -387,34 +437,59 @@ def svg(quads, P, Z, S, printed_sign):
             e += rel([sh(near[0]), sh(far[0])])
         if hi == last or quads[hi + 1]['facing'] != quads[hi]['facing']:
             e += rel([sh(near[-1]), sh(far[-1])])
-        out.append('<path class="rib-edge" d="%s"/>' % e)
+        out.append('<path class="rib-edge" fill="none" d="%s"/>' % e)
         for m, text, alpha in rows_after.get(k, []):
             a_, b_, c_, d_, e_, f_ = m
             op = '' if alpha >= 1 else ' opacity="%s"' % g3(alpha)
             out.append('<text transform="matrix(%s %s %s %s %s %s)"%s>%s</text>' % (
                 g3(a_), g3(b_), g3(c_), g3(d_), g(e_ - x0), g(f_ - y0), op, text.rstrip().replace(' ', '\u00a0')))
     w, h = x1 - x0, y1 - y0
-    head = '<svg class="receipt-ribbon" viewBox="0 0 %d %d" font-size="%s" aria-hidden="true" focusable="false">' % (w, h, g3(FONT))
+    head = '<svg class="%s" viewBox="0 0 %d %d" font-size="%s" aria-hidden="true" focusable="false">' % (CLASS, w, h, g3(FONT))
     return (x0, y0, w, h), head + '<defs>' + ''.join(defs) + '</defs>' + ''.join(out) + '</svg>', len(spans)
 
 
-if __name__ == '__main__':
-    quads, P, Z, S, ps = build()
-    box, markup, nspans = svg(quads, P, Z, S, ps)
-    print('box (shell px at 1440):', box, 'bytes:', len(markup), 'stretches:', nspans,
-          'lines:', markup.count('<text'), 'font:', round(FONT, 3))
-    if sys.argv[1:2] == ['--preview']:
-        Path(sys.argv[2]).write_text(markup)
-        sys.exit()
-    page = SITE / 'index.html'
-    s, n = re.subn(r'<svg class="receipt-ribbon".*?</svg>', lambda m: markup, page.read_text(), count=1, flags=re.S)
-    assert n == 1
-    page.write_text(s)
+def wide_rule(box):
     x0, y0, w, h = box
-    css = SITE / 'styles.css'
-    rule = ('.receipt-ribbon { position: absolute; top: 0; left: %.3f%%; width: %.3f%%; margin-top: %.3f%%; '
+    return ('.receipt-ribbon { position: absolute; top: 0; left: %.3f%%; width: %.3f%%; margin-top: %.3f%%; '
             'height: auto; pointer-events: none; user-select: none; }' % (100 * x0 / SHELL, 100 * w / SHELL, 100 * y0 / SHELL))
-    s, n = re.subn(r'\.receipt-ribbon \{ position: absolute; top: 0; [^}]*\}', lambda m: rule, css.read_text(), count=1)
-    assert n == 1
-    css.write_text(s)
-    print(rule)
+
+
+def stacked_rule(box):
+    # scale with the free width right of the copy (never past the design size), keeping the
+    # tail's place at the card's top
+    x0, y0, w, h = box
+    span = WIDE_AT - FREE
+    free = 'min(100%% - %gpx, %gpx)' % (FREE, span)
+    return ('.receipt-ribbon.receipt-ribbon-stacked { display: block; left: calc(%gpx + %s * %.4f); '
+            'width: calc(%s * %.4f); top: %gpx; margin-top: calc(%s * %.4f); }'
+            % (FREE, free, (x0 - FREE) / span, free, w / span, CARD[1], free, (y0 - CARD[1]) / span))
+
+
+if __name__ == '__main__':
+    page, css = SITE / 'index.html', SITE / 'styles.css'
+    html, styles = page.read_text(), css.read_text()
+    for name, variant, pattern, rule_of, rule_pattern in (
+            ('wide', {}, r'<svg class="receipt-ribbon" .*?</svg>', wide_rule,
+             r'\.receipt-ribbon \{ position: absolute; top: 0; [^}]*\}'),
+            ('stacked', STACKED, r'<svg class="receipt-ribbon receipt-ribbon-stacked" .*?</svg>', stacked_rule,
+             r'\.receipt-ribbon\.receipt-ribbon-stacked \{ display: block; [^}]*\}')):
+        use(variant)
+        quads, P, Z, S, ps = build()
+        box, markup, nspans = svg(quads, P, Z, S, ps)
+        print(name, 'box:', box, 'bytes:', len(markup), 'stretches:', nspans,
+              'lines:', markup.count('<text'), 'font:', round(FONT, 3))
+        if sys.argv[1:2] == ['--preview']:
+            Path(sys.argv[2]).with_suffix('.%s.svg' % name).write_text(markup)
+            continue
+        html, n = re.subn(pattern, lambda m: markup, html, count=1, flags=re.S)
+        assert n == 1, name
+        rule = rule_of(box)
+        styles, n = re.subn(rule_pattern, lambda m: rule, styles, count=1)
+        assert n == 1, name
+        print(rule)
+    if sys.argv[1:2] != ['--preview']:
+        page.write_text(html)
+        css.write_text(styles)
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        import stamp_assets                 # the stylesheet changed, so its link must too
+        stamp_assets.stamp()
