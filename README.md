@@ -10,6 +10,7 @@ This repository is separate from [the OrcaOS tool](https://github.com/Orca-Solut
 
 - `site/` — portable static website, including local fonts and images.
 - `brand-kit/` — 22-page brand book, SVG/PNG logos, mascot, font licenses, design tokens, applications, and voice guidance. Start with `brand-kit/START-HERE.txt`.
+- `tools/art/` — optional Python generators for the computed spot art (the collar dogs and the looping receipt); their output is committed inline in `site/index.html`.
 - `WORKING_RECORD.md` — decisions, verification, and current delivery state.
 
 ## Preview locally

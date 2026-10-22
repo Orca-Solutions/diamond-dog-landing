@@ -210,3 +210,48 @@ his pupils toward the page.
 
 Verification: 1440 px screenshots of the receipt section and the header at
 the top of the page; the loop clears the copy and the card at that width.
+
+## 2026-10-22 — Collars to the brand book, and a receipt that reads
+
+Jason said the collars still weren't landing, that the ribbon's "writing" was
+sometimes just lines all the way across, and that he pictured the receipt
+starting higher, above the writing, filling the space above and to the right
+rather than the gap in between.
+
+Collars now follow the brand book's character constants ("a narrow acid
+collar and a single lilac diamond tag", section 13, matching
+`receipt-dog-personal.png`). Each band is about a third of its old width and
+sits a little proud of the neck outline, as a strap does, with a thin ink rim;
+a small ring tucks under the band at its lowest point and the tag hangs
+straight down from it. The tag's rim and ring use a `--dog-metal` colour
+(paper on the ink dogs, ink on the paper dog), which also stops the resting
+dog's tag reading as a second nose. On the digging dog the band runs from the
+nape into the hole and the tag dangles into it. The resting dog lifts its head
+(tilted, looking toward the button) so its collar shows across the chest, and
+the sitting dog's viewBox is wider so its right ear is no longer clipped.
+
+The receipt ribbon is redrawn as a 3D paper strip: it curls in above the
+eyebrow, runs right over the copy, loops once and slides under the card.
+Because the strip only bends around one fixed width direction, each stretch
+between folds is a single polygon with a gradient, so the shading is smooth,
+there are no seams, and the page markup roughly halved (index.html 95 KB to
+49 KB, 12 KB gzipped). The print is real text in IBM Plex Mono, set along the
+paper with one transform per line: a day of the dog's activity records, eight
+distinct ones from back yard to living room so no two match where the loop
+crosses (scope, what he may read or change, sign-off, then entries such as
+"SQUIRREL IGNORED", "BALL UNKNOWN", "SOFA DECLINED" and "GOOD BOY YES"), in
+the brand's accepted / observed / unknown vocabulary. It is decorative and `aria-hidden`, can't be
+selected or clicked, and stays hidden below 1100 px.
+
+The generators now live in `tools/art/` (`dogs.py`, `ribbon.py`,
+`receipt_text.py`; see its README) instead of scratch notes, so the art can be
+changed later; both reproduce the committed markup exactly. Also fixed a small
+existing bug: on narrow screens the FAQ title read "Still inthe workshop"
+because its hidden line break had no space beside it.
+
+Verification: Chromium screenshots of the receipt section at 1101, 1300, 1440
+and 1920 px (the ribbon clears the eyebrow by 81 px and the heading by 60 px at
+1440, and ends 42 px under the card), zoomed renders of the curl, the loop
+crossing (nearer paper covers farther print) and the text, the three collars at
+1x and 2x with a before/after sheet, and full pages at 1440, 900 and 390 px.
+Not checked with a screen reader or on the deployed domain.

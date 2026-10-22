@@ -105,21 +105,25 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 .footer > a:last-child { font-size: 13px; text-decoration: none; }
 
 /* The dog, recurring. Decorative spot illustrations; every one is aria-hidden. */
-.dog { display: block; fill: currentColor; --dog-bg: var(--paper); }
+.dog { display: block; fill: currentColor; --dog-bg: var(--paper); --dog-metal: var(--paper); }
 .dog .dog-bg { fill: var(--dog-bg); }
 .dog .dog-line { fill: none; stroke: var(--dog-bg); stroke-width: 1.6; }
 .dog .dog-collar { fill: var(--acid); }
-.dog .dog-tag { fill: var(--lilac); }
+.dog .dog-collar-edge { fill: var(--ink); }
+.dog .dog-ring { fill: none; stroke: var(--dog-metal); }
+.dog .dog-tag { fill: var(--lilac); stroke: var(--dog-metal); stroke-linejoin: round; }
 .dog-peek { position: absolute; z-index: 1; left: 36%; bottom: 0; width: 150px; }
 .dog-peek .dog-eyes, .dog-hang .dog-eyes { animation: dog-glance 9s ease-in-out infinite; }
 .dog-hang { position: absolute; left: 50%; top: 100%; width: 84px; color: var(--ink); transition: transform 220ms ease; }
 .dog-hang .dog-eyes { animation-delay: 4s; }
 .is-scrolled .dog-hang { transform: translateY(-100%); opacity: 0; }
-.receipt-ribbon { position: absolute; top: 120px; left: 37%; width: 230px; height: 620px; }
-.receipt-ribbon .edge { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; opacity: .75; }
-.receipt-ribbon .print { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-linecap: round; opacity: .35; }
+.evidence-grid { position: relative; }
+.evidence-copy, .receipt-wrap { position: relative; z-index: 1; }
+.receipt-ribbon { position: absolute; top: 0; left: 10.076%; width: 47.576%; margin-top: -6.515%; height: auto; pointer-events: none; user-select: none; }
+.receipt-ribbon .rib-edge { fill: none; stroke: #8f897f; stroke-width: .9; stroke-linecap: round; }
+.receipt-ribbon text { font-family: Plex, monospace; fill: #4a463f; }
 .dog-sit-wrap { position: absolute; left: max(56px, calc(50% - 660px)); bottom: 0; display: flex; align-items: flex-end; gap: 22px; color: var(--paper); }
-.dog-sit { width: 112px; --dog-bg: var(--ink); }
+.dog-sit { width: 120px; --dog-bg: var(--ink); --dog-metal: var(--ink); }
 .dog-sit-wrap figcaption { margin-bottom: 20px; font: 10px/1.6 Plex, monospace; letter-spacing: .06em; color: #b5b0a8; }
 .dog-dig-wrap { width: 300px; margin: 28px 0 0 auto; }
 .dog-dig { width: 300px; }
@@ -177,7 +181,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .principles p { max-width: 520px; font-size: 16px; }
   .evidence { padding: 64px 0 150px; }
   .dog-sit-wrap { left: 20px; gap: 16px; }
-  .dog-sit { width: 92px; }
+  .dog-sit { width: 98px; }
   .dog-sit-wrap figcaption { margin-bottom: 14px; font-size: 9px; }
   .evidence-grid { grid-template-columns: 1fr; gap: 44px; }
   .evidence h2 { font-size: 53px; }
