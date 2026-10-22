@@ -17,3 +17,17 @@ for (const button of evidenceButtons) {
     explanation.textContent = explanations[button.dataset.evidence];
   });
 }
+
+const header = document.querySelector('.header');
+let scrolled = null;
+
+function updateHeader() {
+  const next = window.scrollY > 8;
+  if (next !== scrolled) {
+    scrolled = next;
+    header.classList.toggle('is-scrolled', next);
+  }
+}
+
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();

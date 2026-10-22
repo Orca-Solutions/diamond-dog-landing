@@ -121,3 +121,162 @@ development." in the same IBM Plex Mono size and position. The brand kit's
 Verification: 1440, 1100, 1024, 800, 390 and 320px inspection with no horizontal
 overflow and no console warnings or errors; receipt header text checked with
 `innerText`; social card compared against a re-render of the original line.
+
+## 2026-10-22 — The dog as a recurring character
+
+Jason asked for playful art to fill the page's empty space and give Diamond Dog
+some personality: curious and mischievous, and he always follows the rules.
+
+Added five inline SVG spot illustrations drawn in the mark's flat geometry
+(folded ears, paper eye dots, the open diamond nose, acid collar and lilac tag):
+a head and paws peeking over the rule at the bottom of the hero; a paper dog
+sitting on the floor of the dark receipt section, looking up at the receipt
+("Sits. Waits for sign-off."); a butt-up dog digging a hole beside the FAQ
+("Digging. Within scope."); a dog lying along the bottom edge of the lilac
+closing block; and paw prints walking toward "Back to top". Every drawing is
+`aria-hidden` and `focusable="false"`; the two mono captions are ordinary text.
+Colors come from the brand tokens through `currentColor` and a `--dog-bg`
+variable, so one drawing works on paper, ink and lilac.
+
+Motion is one short tail wag every eight seconds (staggered per dog) and an
+occasional sideways glance from the peeking dog. `prefers-reduced-motion` now
+cancels animations as well as transitions. No new files, scripts or requests;
+the page stays buildless.
+
+Verification: full-page Chromium screenshots at 1440, 900 and 390 px; the
+desktop hero, receipt, FAQ and closing placements were checked at actual size,
+the peeking dog moves to the right edge on narrow layouts, the receipt section
+gains bottom room for the sitting dog, and the paw prints hide where the footer
+wraps. Not checked with a screen reader beyond the hidden-decorative markup, and
+not checked on the deployed domain.
+
+## 2026-10-22 — Sticky ink header, receipt ribbon and collar tidy-up
+
+Jason asked for a sticky header in lilac or ink with the logo mark bigger, one
+more mischievous dog on the bar, a long receipt looping down the empty gap in
+the receipt section, the digging dog moved right into its gap, and tidier
+collars and tags.
+
+The header is now a full-width sticky ink bar (84 px, 64 px on narrow screens)
+with the paper mark at 60 px beside a smaller paper wordmark (`assets/mark-paper.svg`
+and the new `assets/wordmark-paper.svg`, both from the brand kit); the combined
+`logo.svg` stays in the footer. Ink was chosen over lilac so the bar bookends
+the dark receipt section and keeps lilac for the closing block; switching is a
+one-line change. `scroll-padding-top` matches the bar so anchor links land
+below it, and focus rings on the bar use acid. A dog hangs down from the bar's
+underside at the top of the page, paws over the edge; `script.js` adds
+`is-scrolled` to the header after 8 px of scroll so he slides back up and fades,
+staying out of the way of content. Without JavaScript he simply stays put.
+
+A paper receipt ribbon with mono-style print lines now runs down the gap
+between the copy and the card in the receipt section (hidden below 1100 px
+where the gap disappears). The digging dog sits right-aligned in the FAQ's
+left column, closer to the questions. Collars are one clean band with the
+lilac tag hanging from its lower edge on the sitting, digging and resting dogs.
+
+Verification: Chromium screenshots at 1440, 900 and 390 px at the top of the
+page and after scrolling; the bar sticks, the hanging dog hides on scroll, the
+ribbon clears both the copy and the card at 1440 px, and anchors land under
+the bar. Not checked with a screen reader or on the deployed domain.
+
+## 2026-10-22 — Coloured full stops on the section titles
+
+Jason asked for the final full stop of the four major titles in acid or lilac,
+leaning acid, and wondered about splitting by background. Compared all-acid,
+all-lilac and both splits at 1440 px (comparison image shared in the project
+thread). Shipped lilac on paper and acid on ink: each colour sits on the
+background where it has the most punch, acid stays the focal point in the dark
+section where it already colours the eyebrow, and the receipt title keeps its
+lilac "unknown" without a second lilac beside it. The stop is a `<span class="stop">`
+inside the heading, so screen readers still read the sentence; swapping the
+colours is two lines in `styles.css`.
+
+## 2026-10-22 — Looping receipt and the hanging dog, second pass
+
+Jason wanted the receipt ribbon more three-dimensional, looping over itself,
+and only filling the gap rather than running edge to edge; and the header dog
+read as upside down to him, so he asked for the head flipped with the pupils
+still looking down.
+
+The ribbon is now generated geometry (a torn top edge, a short fall, one loop
+that crosses over itself, then a fall into a curl) rendered as flat quads with
+a shade that darkens as the paper turns sideways and a warmer tone where it
+climbs and shows its back, thin ink edges, and print lines across the straight
+runs. The generator is a short Python script kept with the working notes of
+this change, not in the repository; the output is the inline SVG in
+`index.html`. It sits at 37% from the left, 120 px down, and hides below
+1100 px. The header dog now hangs by his paws with his head upside down and
+his pupils toward the page.
+
+Verification: 1440 px screenshots of the receipt section and the header at
+the top of the page; the loop clears the copy and the card at that width.
+
+## 2026-10-22 — Collars to the brand book, and a receipt that reads
+
+Jason said the collars still weren't landing, that the ribbon's "writing" was
+sometimes just lines all the way across, and that he pictured the receipt
+starting higher, above the writing, filling the space above and to the right
+rather than the gap in between.
+
+Collars now follow the brand book's character constants ("a narrow acid
+collar and a single lilac diamond tag", section 13, matching
+`receipt-dog-personal.png`). Each band is about a third of its old width and
+sits a little proud of the neck outline, as a strap does, with a thin ink rim;
+a small ring tucks under the band at its lowest point and the tag hangs
+straight down from it. The tag's rim and ring use a `--dog-metal` colour
+(paper on the ink dogs, ink on the paper dog), which also stops the resting
+dog's tag reading as a second nose. On the digging dog the band runs from the
+nape into the hole and the tag dangles into it. The resting dog lifts its head
+(tilted, looking toward the button) so its collar shows across the chest, and
+the sitting dog's viewBox is wider so its right ear is no longer clipped.
+
+The receipt ribbon is redrawn as a 3D paper strip: it curls in above the
+eyebrow, runs right over the copy, loops once and slides under the card.
+Because the strip only bends around one fixed width direction, each stretch
+between folds is a single polygon with a gradient, so the shading is smooth,
+there are no seams, and the page markup roughly halved (index.html 95 KB to
+49 KB, 12 KB gzipped). The print is real text in IBM Plex Mono, set along the
+paper with one transform per line: a day of the dog's activity records, eight
+distinct ones from back yard to living room so no two match where the loop
+crosses (scope, what he may read or change, sign-off, then entries such as
+"SQUIRREL IGNORED", "BALL UNKNOWN", "SOFA DECLINED" and "GOOD BOY YES"), in
+the brand's accepted / observed / unknown vocabulary. It is decorative and `aria-hidden`, can't be
+selected or clicked, and stays hidden below 1100 px.
+
+The generators now live in `tools/art/` (`dogs.py`, `ribbon.py`,
+`receipt_text.py`; see its README) instead of scratch notes, so the art can be
+changed later; both reproduce the committed markup exactly. Also fixed a small
+existing bug: on narrow screens the FAQ title read "Still inthe workshop"
+because its hidden line break had no space beside it.
+
+Verification: Chromium screenshots of the receipt section at 1101, 1300, 1440
+and 1920 px (the ribbon clears the eyebrow by 81 px and the heading by 60 px at
+1440, and ends 42 px under the card), zoomed renders of the curl, the loop
+crossing (nearer paper covers farther print) and the text, the three collars at
+1x and 2x with a before/after sheet, and full pages at 1440, 900 and 390 px.
+Not checked with a screen reader or on the deployed domain.
+
+## 2026-10-22 — A receipt loop that could exist, and collars on the peeking dogs
+
+Jason liked the collars and the receipt text but said the loop did not look
+physically possible. He was right: the paper came round and passed through
+itself. The loop is now a coil: as it goes round, the paper drifts sideways
+along its width by a little more than its width, so it passes beside itself
+and comes out nearer the viewer, the way a real curl of receipt paper does.
+Overlaps are now ordered by depth at the point where they overlap. The loop is
+a little tighter so the descent still clears the copy.
+
+At his invitation the receipt is slightly more cartoonish, to match the dogs:
+the smooth shading is now three flat tones per side (hard gradient stops, still
+one polygon per stretch, no seams), with an ink outline along the edges and the
+folds, like the collars' ink rim. The page markup shrank slightly (about 29 KB
+for the ribbon).
+
+The header dog and the hero peeking dog showed a gap at the neck between head
+and paws; it is now filled with the acid collar colour, as he asked.
+
+Verification: Chromium renders of the receipt section at 1101, 1300, 1440 and
+1920 px, a 3x render of the coil, and both peeking dogs at 3x. At 1440 the
+ribbon clears the eyebrow by 67 px, the heading lines by 49, 51 and 57 px, and
+ends 34 px under the card (22 px at 1101). Not checked with a screen reader or
+on the deployed domain.
