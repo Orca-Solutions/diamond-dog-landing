@@ -149,3 +149,32 @@ the peeking dog moves to the right edge on narrow layouts, the receipt section
 gains bottom room for the sitting dog, and the paw prints hide where the footer
 wraps. Not checked with a screen reader beyond the hidden-decorative markup, and
 not checked on the deployed domain.
+
+## 2026-10-22 — Sticky ink header, receipt ribbon and collar tidy-up
+
+Jason asked for a sticky header in lilac or ink with the logo mark bigger, one
+more mischievous dog on the bar, a long receipt looping down the empty gap in
+the receipt section, the digging dog moved right into its gap, and tidier
+collars and tags.
+
+The header is now a full-width sticky ink bar (84 px, 64 px on narrow screens)
+with the paper mark at 60 px beside a smaller paper wordmark (`assets/mark-paper.svg`
+and the new `assets/wordmark-paper.svg`, both from the brand kit); the combined
+`logo.svg` stays in the footer. Ink was chosen over lilac so the bar bookends
+the dark receipt section and keeps lilac for the closing block; switching is a
+one-line change. `scroll-padding-top` matches the bar so anchor links land
+below it, and focus rings on the bar use acid. A dog hangs down from the bar's
+underside at the top of the page, paws over the edge; `script.js` adds
+`is-scrolled` to the header after 8 px of scroll so he slides back up and fades,
+staying out of the way of content. Without JavaScript he simply stays put.
+
+A paper receipt ribbon with mono-style print lines now runs down the gap
+between the copy and the card in the receipt section (hidden below 1100 px
+where the gap disappears). The digging dog sits right-aligned in the FAQ's
+left column, closer to the questions. Collars are one clean band with the
+lilac tag hanging from its lower edge on the sitting, digging and resting dogs.
+
+Verification: Chromium screenshots at 1440, 900 and 390 px at the top of the
+page and after scrolling; the bar sticks, the hanging dog hides on scroll, the
+ribbon clears both the copy and the card at 1440 px, and anchors land under
+the bar. Not checked with a screen reader or on the deployed domain.
