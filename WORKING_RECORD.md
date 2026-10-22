@@ -255,3 +255,28 @@ and 1920 px (the ribbon clears the eyebrow by 81 px and the heading by 60 px at
 crossing (nearer paper covers farther print) and the text, the three collars at
 1x and 2x with a before/after sheet, and full pages at 1440, 900 and 390 px.
 Not checked with a screen reader or on the deployed domain.
+
+## 2026-10-22 — A receipt loop that could exist, and collars on the peeking dogs
+
+Jason liked the collars and the receipt text but said the loop did not look
+physically possible. He was right: the paper came round and passed through
+itself. The loop is now a coil: as it goes round, the paper drifts sideways
+along its width by a little more than its width, so it passes beside itself
+and comes out nearer the viewer, the way a real curl of receipt paper does.
+Overlaps are now ordered by depth at the point where they overlap. The loop is
+a little tighter so the descent still clears the copy.
+
+At his invitation the receipt is slightly more cartoonish, to match the dogs:
+the smooth shading is now three flat tones per side (hard gradient stops, still
+one polygon per stretch, no seams), with an ink outline along the edges and the
+folds, like the collars' ink rim. The page markup shrank slightly (about 29 KB
+for the ribbon).
+
+The header dog and the hero peeking dog showed a gap at the neck between head
+and paws; it is now filled with the acid collar colour, as he asked.
+
+Verification: Chromium renders of the receipt section at 1101, 1300, 1440 and
+1920 px, a 3x render of the coil, and both peeking dogs at 3x. At 1440 the
+ribbon clears the eyebrow by 67 px, the heading lines by 49, 51 and 57 px, and
+ends 34 px under the card (22 px at 1101). Not checked with a screen reader or
+on the deployed domain.

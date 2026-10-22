@@ -4,13 +4,16 @@ Model: the strip bends only around one fixed width direction b3 (paper curls, it
 stretch), seen in orthographic projection. On screen every cross-section is the same vector
 B, the strip's 3D depth follows from b3, and shading depends only on the position along the
 paper. The centre line is drawn like a turtle: a list of (length, curvature at start,
-curvature at end) pieces.
+curvature at end) pieces. Where the line loops, the paper also drifts along b3 by a little
+more than its width, so the loop is a coil that passes beside itself, as real paper must,
+instead of through itself.
 
 Because every cross-section is parallel to B, the paper between two folds (where it turns
 from front to back on screen) never covers itself, and its shading is a function of the
 position across B alone. So each such stretch is one polygon filled with a linear gradient
-running perpendicular to B: smooth shading, no seams, few elements. Stretches are painted
-far to near wherever they overlap.
+running perpendicular to B, with hard stops: a few flat tones, cartoon style, to match the
+dogs, and no seams. An ink outline runs along the edges and the folds. Stretches are painted
+far to near wherever they overlap, judged by depth at the overlap.
 
 The printing is real text in the page's mono face. Receipt lines run across the paper, so
 each line is one <text> with an affine transform: x along the width (B, foreshortened) and
@@ -39,15 +42,17 @@ PIECES = [                     # (length px, curvature start, curvature end); cu
     (80, -0.106, -0.025),      # the curled free end unwinding (about -300 degrees)
     (40, -0.025, 0.000),
     (150, 0.000, 0.003),       # a gentle run to the right, above the eyebrow
-    (30, 0.003, 0.019),
-    (314, 0.019, 0.019),       # one full loop, curling under
-    (40, 0.019, 0.004),
+    (30, 0.003, 0.022),
+    (264, 0.022, 0.022),       # one coil, curling under
+    (40, 0.022, 0.004),
     (100, 0.004, 0.006),       # a slow S on the way down, right of the heading
     (100, 0.006, -0.006),
     (100, -0.006, -0.002),
     (60, -0.002, 0.0),
-    (230, 0.0, 0.0),           # straight on, under the card
+    (400, 0.0, 0.0),           # straight on, under the card (cut off once it is out of sight)
 ]
+COIL = (285.0, 589.0, 1.1)     # (from, to) along the centre line: the loop drifts this many paper
+                               # widths sideways, so it coils past itself instead of through itself
 B = (-20.0, 40.0)              # the strip's width as seen on screen
 BZ = 34.0                      # how much the width leans toward the viewer
 STEP = 3.0                     # longest sampling step along the centre line, px
@@ -55,6 +60,7 @@ LIGHT = (-0.35, -0.55, 0.76)
 PAPER = (0xF4, 0xF0, 0xE8)
 BACK = (0xDD, 0xD7, 0xCC)
 AMBIENT = 0.80
+TONES = ((0.95, 1.0), (0.82, 0.92), (0.0, 0.84))   # flat tones, cartoon style: (from light, brightness)
 CARD_EDGE = (713.0, -0.0207)   # the receipt card's left edge: x = a + b * (y + 6)
 SHADOW = 26.0                  # how far the card's shadow reaches onto the ribbon, px
 
@@ -83,8 +89,8 @@ def dot3(a, b):
 
 
 def centre_line():
-    """Points along the centre line and the curvature of each step."""
-    pts, ks = [START], []
+    """Points along the centre line, the curvature of each step and the distance to each point."""
+    pts, ks, ss = [START], [], [0.0]
     th = math.radians(HEADING)
     x, y = START
     for length, k0, k1 in PIECES:
@@ -98,7 +104,15 @@ def centre_line():
             y += math.sin(th) * ds
             pts.append((x, y))
             ks.append(k)
-    return pts, ks
+            ss.append(ss[-1] + ds)
+    return pts, ks, ss
+
+
+def drift(s):
+    """How far the paper has moved along its width at distance s, in px (a smooth ramp)."""
+    a, b, widths = COIL
+    t = min(1.0, max(0.0, (s - a) / (b - a)))
+    return widths * W3 * t * t * (3 - 2 * t)
 
 
 def card_x(y):
@@ -107,17 +121,20 @@ def card_x(y):
 
 def build():
     """Quads along the paper, with their facing, shade and depth."""
-    c, ks = centre_line()
+    c, ks, ss = centre_line()
+    # the loop drifts along the width as it goes round (a coil, like a real curl of paper)
+    h = [drift(s) for s in ss]
+    c = [(x + B[0] * d / W3, y + B[1] * d / W3) for (x, y), d in zip(c, h)]
     # stop once the whole width is well under the card
     for i, (x, y) in enumerate(c):
         if min(x - abs(B[0])/2, x + B[0]/2) > card_x(y) + 34 and i > len(c) // 2:
-            c, ks = c[:i+1], ks[:i]
+            c, ks, h = c[:i+1], ks[:i], h[:i+1]
             break
     b3 = (B[0], B[1], BZ)
-    # the u=0 edge (centre line minus half the width) and its depth, so the profile lies in
-    # the plane normal to b3
+    # the u=0 edge (centre line minus half the width) and its depth: each cross-section lies
+    # in a plane normal to b3, offset by the drift
     P = [(x - B[0]/2, y - B[1]/2) for x, y in c]
-    Z = [-(B[0]*px + B[1]*py) / BZ for px, py in P]
+    Z = [(d * W3 - (B[0]*px + B[1]*py)) / BZ for (px, py), d in zip(P, h)]
     S = [0.0]
     for i in range(1, len(P)):
         S.append(S[-1] + math.sqrt((P[i][0]-P[i-1][0])**2 + (P[i][1]-P[i-1][1])**2 + (Z[i]-Z[i-1])**2))
@@ -140,33 +157,46 @@ def build():
         gap = card_x(mid[1]) - mid[0]
         if -SHADOW < gap < SHADOW:                           # the card's shadow, just before it
             light *= 1 - 0.16 * (1 - max(0.0, gap) / SHADOW)
-        quads.append(dict(i=i, depth=B[0]*(a[0]+b[0])/2 + B[1]*(a[1]+b[1])/2, facing=facing,
-                          front=front, light=light, nz=abs(n[2]), k=ks[i] if i < len(ks) else 0.0))
-    return quads, P, S, printed_sign
+        quads.append(dict(i=i, facing=facing, front=front, light=light, nz=abs(n[2]),
+                          k=ks[i] if i < len(ks) else 0.0))
+    return quads, P, Z, S, printed_sign
 
 
-def overlaps(P):
-    """Pairs of quads (not neighbours) that cover each other on screen."""
+def overlaps(P, Z):
+    """(far, near) for each pair of quads (not neighbours) that cover each other on screen,
+    judged by their depths where they overlap."""
     from shapely.geometry import Polygon
     from shapely.strtree import STRtree
     polys = [Polygon([P[i], P[i+1], (P[i+1][0]+B[0], P[i+1][1]+B[1]), (P[i][0]+B[0], P[i][1]+B[1])])
              for i in range(len(P) - 1)]
+    def depth(i, x, y):
+        # solve (x, y) = P[i] + t (P[i+1] - P[i]) + w B for t and w, then interpolate z
+        ax, ay = P[i+1][0] - P[i][0], P[i+1][1] - P[i][1]
+        dx, dy = x - P[i][0], y - P[i][1]
+        det = ax * B[1] - ay * B[0]
+        t = (dx * B[1] - dy * B[0]) / det
+        w = (ax * dy - ay * dx) / det
+        return Z[i] + t * (Z[i+1] - Z[i]) + w * BZ
+
     tree = STRtree(polys)
     pairs = []
     for i, p in enumerate(polys):
         for j in tree.query(p):
             j = int(j)
-            if j > i + 1 and p.intersection(polys[j]).area > 0.01:
-                pairs.append((i, j))
+            if j <= i + 1:
+                continue
+            both = p.intersection(polys[j])
+            if both.area > 0.01:
+                m = both.centroid
+                pairs.append((i, j) if depth(i, m.x, m.y) < depth(j, m.x, m.y) else (j, i))
     return pairs
 
 
-def stretches(quads, pairs):
+def stretches(quads, before):
     """Split the paper into stretches that face one way and can be painted whole, in an order
-    that keeps nearer paper on top. Returns [(lo, hi)] in paint order."""
+    that keeps nearer paper on top (before: far, near quad pairs). Returns [(lo, hi)] in paint
+    order."""
     n = len(quads)
-    # far before near, for every pair that overlaps
-    before = [(i, j) if quads[i]['depth'] > quads[j]['depth'] else (j, i) for i, j in pairs]
 
     def cyclic(owner):
         nodes = set(owner)
@@ -293,27 +323,22 @@ def colour(base, k):
     return '#%02x%02x%02x' % tuple(max(0, min(255, round(c * k))) for c in base)
 
 
-def shade_stops(points, tol=0.0025):
-    """Thin (offset, light) samples to the ones a linear gradient needs (1D Douglas-Peucker)."""
-    keep = {0, len(points) - 1}
-    def split(a, b):
-        (oa, la), (ob, lb) = points[a], points[b]
-        worst, at = 0.0, None
-        for k in range(a + 1, b):
-            o, l = points[k]
-            t = (o - oa) / ((ob - oa) or 1e-9)
-            d = abs(l - (la + (lb - la) * t))
-            if d > worst:
-                worst, at = d, k
-        if at is not None and worst > tol:
-            keep.add(at)
-            split(a, at)
-            split(at, b)
-    split(0, len(points) - 1)
-    return [points[k] for k in sorted(keep)]
+def tone(light):
+    return next(k for floor, k in TONES if light >= floor)
 
 
-def svg(quads, P, S, printed_sign):
+def tone_stops(samples):
+    """Hard-edged gradient stops for (offset, light) samples: flat tones, each change halfway
+    between the samples either side of it."""
+    stops = [(0.0, tone(samples[0][1]))]
+    for (oa, la), (ob, lb) in zip(samples, samples[1:]):
+        if tone(lb) != tone(la):
+            o = (oa + ob) / 2
+            stops += [(o, tone(la)), (o, tone(lb))]
+    return stops + [(1.0, tone(samples[-1][1]))]
+
+
+def svg(quads, P, Z, S, printed_sign):
     xs = [p[0] + d for p in P for d in (0, B[0])]
     ys = [p[1] + d for p in P for d in (0, B[1])]
     x0, y0 = math.floor(min(xs)) - 2, math.floor(min(ys)) - 2
@@ -321,7 +346,7 @@ def svg(quads, P, S, printed_sign):
     sh = lambda p: (p[0] - x0, p[1] - y0)
     last = len(P) - 2
 
-    spans = stretches(quads, overlaps(P))
+    spans = stretches(quads, overlaps(P, Z))
     span_at = {}
     for k, (lo, hi) in enumerate(spans):
         for t in range(lo, hi + 1):
@@ -345,8 +370,8 @@ def svg(quads, P, S, printed_sign):
             mid = sh(((P[q['i']][0] + P[q['i'] + 1][0]) / 2, (P[q['i']][1] + P[q['i'] + 1][1]) / 2))
             samples.append(((across(mid) - t0) / ((t1 - t0) or 1e-9), q['light']))
         samples.append((1.0, quads[hi]['light']))
-        stops = shade_stops(samples)
-        if len({colour(base, l) for _, l in stops}) == 1:
+        stops = tone_stops(samples)
+        if len(stops) == 2:
             fill = colour(base, stops[0][1])
         else:
             a = sh(near[0])
@@ -356,11 +381,11 @@ def svg(quads, P, S, printed_sign):
                 ''.join('<stop offset="%s" stop-color="%s"/>' % (g3(max(0, min(1, o))), colour(base, l)) for o, l in stops)))
             fill = 'url(#rib%d)' % k
         out.append('<path fill="%s" d="%sz"/>' % (fill, rel(ring)))
-        # the long edges and the receipt's cut ends
+        # the long edges, the receipt's cut ends and the folds where it turns over
         e = rel([sh(p) for p in near]) + rel([sh(p) for p in far])
-        if lo == 0:
+        if lo == 0 or quads[lo - 1]['facing'] != quads[lo]['facing']:
             e += rel([sh(near[0]), sh(far[0])])
-        if hi == last:
+        if hi == last or quads[hi + 1]['facing'] != quads[hi]['facing']:
             e += rel([sh(near[-1]), sh(far[-1])])
         out.append('<path class="rib-edge" d="%s"/>' % e)
         for m, text, alpha in rows_after.get(k, []):
@@ -374,8 +399,8 @@ def svg(quads, P, S, printed_sign):
 
 
 if __name__ == '__main__':
-    quads, P, S, ps = build()
-    box, markup, nspans = svg(quads, P, S, ps)
+    quads, P, Z, S, ps = build()
+    box, markup, nspans = svg(quads, P, Z, S, ps)
     print('box (shell px at 1440):', box, 'bytes:', len(markup), 'stretches:', nspans,
           'lines:', markup.count('<text'), 'font:', round(FONT, 3))
     if sys.argv[1:2] == ['--preview']:

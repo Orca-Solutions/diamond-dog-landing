@@ -119,8 +119,8 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 .is-scrolled .dog-hang { transform: translateY(-100%); opacity: 0; }
 .evidence-grid { position: relative; }
 .evidence-copy, .receipt-wrap { position: relative; z-index: 1; }
-.receipt-ribbon { position: absolute; top: 0; left: 10.076%; width: 47.576%; margin-top: -6.515%; height: auto; pointer-events: none; user-select: none; }
-.receipt-ribbon .rib-edge { fill: none; stroke: #8f897f; stroke-width: .9; stroke-linecap: round; }
+.receipt-ribbon { position: absolute; top: 0; left: 10.076%; width: 47.500%; margin-top: -6.515%; height: auto; pointer-events: none; user-select: none; }
+.receipt-ribbon .rib-edge { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .receipt-ribbon text { font-family: Plex, monospace; fill: #4a463f; }
 .dog-sit-wrap { position: absolute; left: max(56px, calc(50% - 660px)); bottom: 0; display: flex; align-items: flex-end; gap: 22px; color: var(--paper); }
 .dog-sit { width: 120px; --dog-bg: var(--ink); --dog-metal: var(--ink); }
