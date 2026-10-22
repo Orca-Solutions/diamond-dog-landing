@@ -97,3 +97,27 @@ After PR #4 merged, Jason asked for a single landing page only. Removed
 single "Explore the project" button. The hero's plain-benefit sentence and the
 taller desktop hero stay. A "Follow development" destination is deferred; an
 email list would need a mail-service account and Jason's choice of provider.
+
+## 2026-10-22 — Consistency fixes from a second review
+
+A review of the live page suggested small consistency fixes; Jason asked for them.
+
+- One status phrase, "In development", in the header, hero eyebrow, meta and
+  Open Graph descriptions, and the social card. The hero note drops "First
+  experiment under way." The FAQ still explains the experiment in prose.
+- The share title now matches the page title: "Diamond Dog — Delegate work, not
+  your identity."
+- The receipt header read as "ACTIVITY RECORD014" in plain text. It now has a
+  space between its two labels and reads "ACTIVITY RECORD NO. 014".
+- Footer adds "Made by Orca Solutions · 2026".
+- The closing panel names the licenses: GPLv3 for the runtime; MIT for the SDK,
+  interfaces and examples.
+
+`site/assets/social.png` was edited in place: its last line now reads "In
+development." in the same IBM Plex Mono size and position. The brand kit's
+`applications/social-preview.{svg,png}` are the v1 handoff and still say
+"First experiment under way."
+
+Verification: 1440, 1100, 1024, 800, 390 and 320px inspection with no horizontal
+overflow and no console warnings or errors; receipt header text checked with
+`innerText`; social card compared against a re-render of the original line.
