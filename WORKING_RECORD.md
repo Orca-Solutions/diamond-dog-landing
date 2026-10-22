@@ -178,3 +178,15 @@ Verification: Chromium screenshots at 1440, 900 and 390 px at the top of the
 page and after scrolling; the bar sticks, the hanging dog hides on scroll, the
 ribbon clears both the copy and the card at 1440 px, and anchors land under
 the bar. Not checked with a screen reader or on the deployed domain.
+
+## 2026-10-22 — Coloured full stops on the section titles
+
+Jason asked for the final full stop of the four major titles in acid or lilac,
+leaning acid, and wondered about splitting by background. Compared all-acid,
+all-lilac and both splits at 1440 px (comparison image shared in the project
+thread). Shipped lilac on paper and acid on ink: each colour sits on the
+background where it has the most punch, acid stays the focal point in the dark
+section where it already colours the eyebrow, and the receipt title keeps its
+lilac "unknown" without a second lilac beside it. The stop is a `<span class="stop">`
+inside the heading, so screen readers still read the sentence; swapping the
+colours is two lines in `styles.css`.

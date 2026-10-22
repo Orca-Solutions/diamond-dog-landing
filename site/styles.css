@@ -47,6 +47,8 @@ h1 { font-size: clamp(62px, 6.8vw, 98px); line-height: 1.02; letter-spacing: -.0
 .section-heading { display: grid; grid-template-columns: 1fr 1fr; column-gap: 80px; }
 .section-heading .eyebrow { grid-column: 1/-1; margin-bottom: 25px; }
 h2 { font-size: clamp(36px, 4.4vw, 62px); line-height: 1.06; letter-spacing: -.055em; }
+.stop { color: var(--lilac); }
+.evidence .stop { color: var(--acid); }
 .section-heading > p:last-child { font-size: 24px; line-height: 1.5; max-width: 460px; align-self: end; letter-spacing: -.025em; }
 .principles { display: grid; grid-template-columns: repeat(3,1fr); gap: 46px; margin-top: 62px; }
 .principles article { border-top: 1px solid var(--ink); padding-top: 20px; }
