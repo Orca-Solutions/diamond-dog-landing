@@ -121,3 +121,31 @@ development." in the same IBM Plex Mono size and position. The brand kit's
 Verification: 1440, 1100, 1024, 800, 390 and 320px inspection with no horizontal
 overflow and no console warnings or errors; receipt header text checked with
 `innerText`; social card compared against a re-render of the original line.
+
+## 2026-10-22 — The dog as a recurring character
+
+Jason asked for playful art to fill the page's empty space and give Diamond Dog
+some personality: curious and mischievous, and he always follows the rules.
+
+Added five inline SVG spot illustrations drawn in the mark's flat geometry
+(folded ears, paper eye dots, the open diamond nose, acid collar and lilac tag):
+a head and paws peeking over the rule at the bottom of the hero; a paper dog
+sitting on the floor of the dark receipt section, looking up at the receipt
+("Sits. Waits for sign-off."); a butt-up dog digging a hole beside the FAQ
+("Digging. Within scope."); a dog lying along the bottom edge of the lilac
+closing block; and paw prints walking toward "Back to top". Every drawing is
+`aria-hidden` and `focusable="false"`; the two mono captions are ordinary text.
+Colors come from the brand tokens through `currentColor` and a `--dog-bg`
+variable, so one drawing works on paper, ink and lilac.
+
+Motion is one short tail wag every eight seconds (staggered per dog) and an
+occasional sideways glance from the peeking dog. `prefers-reduced-motion` now
+cancels animations as well as transitions. No new files, scripts or requests;
+the page stays buildless.
+
+Verification: full-page Chromium screenshots at 1440, 900 and 390 px; the
+desktop hero, receipt, FAQ and closing placements were checked at actual size,
+the peeking dog moves to the right edge on narrow layouts, the receipt section
+gains bottom room for the sitting dog, and the paw prints hide where the footer
+wraps. Not checked with a screen reader beyond the hidden-decorative markup, and
+not checked on the deployed domain.

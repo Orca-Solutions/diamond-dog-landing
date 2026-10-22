@@ -49,7 +49,7 @@ h2 { font-size: clamp(36px, 4.4vw, 62px); line-height: 1.06; letter-spacing: -.0
 h3 { font-size: 23px; letter-spacing: -.04em; }
 .principles h3 { margin: 32px 0 16px; }
 .principles p { font-size: 17px; line-height: 1.6; color: var(--muted); max-width: 350px; }
-.evidence { background: var(--ink); color: var(--paper); padding: 110px 0 105px; }
+.evidence { position: relative; background: var(--ink); color: var(--paper); padding: 110px 0 105px; }
 .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
 .evidence-copy .eyebrow { color: var(--acid); margin-bottom: 34px; }
 .evidence h2 { font-size: clamp(44px,5vw,70px); }
@@ -97,6 +97,28 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 .footer p { color: var(--muted); font-size: 13px; }
 .footer > a:last-child { font-size: 13px; text-decoration: none; }
 
+/* The dog, recurring. Decorative spot illustrations; every one is aria-hidden. */
+.dog { display: block; fill: currentColor; --dog-bg: var(--paper); }
+.dog .dog-bg { fill: var(--dog-bg); }
+.dog .dog-line { fill: none; stroke: var(--dog-bg); stroke-width: 1.6; }
+.dog .dog-collar { fill: var(--acid); }
+.dog .dog-tag { fill: var(--lilac); }
+.dog-peek { position: absolute; z-index: 1; left: 36%; bottom: 0; width: 150px; }
+.dog-peek .dog-eyes { animation: dog-glance 9s ease-in-out infinite; }
+.dog-sit-wrap { position: absolute; left: max(56px, calc(50% - 660px)); bottom: 0; display: flex; align-items: flex-end; gap: 22px; color: var(--paper); }
+.dog-sit { width: 112px; --dog-bg: var(--ink); }
+.dog-sit-wrap figcaption { margin-bottom: 20px; font: 10px/1.6 Plex, monospace; letter-spacing: .06em; color: #b5b0a8; }
+.dog-dig-wrap { margin-top: 64px; max-width: 355px; }
+.dog-dig { width: 250px; margin-left: -6px; }
+.dog-dig-wrap figcaption { margin-top: 8px; font: 10px/1.6 Plex, monospace; letter-spacing: .06em; color: var(--muted); }
+.dog-rest { width: 250px; align-self: flex-end; margin: 0 24px -45px; --dog-bg: var(--lilac); }
+.dog-paws { width: 120px; margin-left: auto; margin-right: 34px; opacity: .55; }
+.dog-tail { animation: dog-wag 8s ease-in-out infinite; }
+.dog-sit .dog-tail { animation-delay: 2.5s; }
+.dog-rest .dog-tail { animation-delay: 5s; }
+@keyframes dog-wag { 0%, 13%, 100% { transform: rotate(0); } 3% { transform: rotate(14deg); } 6.5% { transform: rotate(-10deg); } 10% { transform: rotate(9deg); } }
+@keyframes dog-glance { 0%, 42%, 76%, 100% { transform: translateX(0); } 48%, 70% { transform: translateX(-4px); } }
+
 @media (max-width: 1100px) {
   .shell { width: calc(100% - 72px); }
   .header { gap: 28px; }
@@ -110,6 +132,8 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .principles { gap: 30px; }
   .receipt { padding: 25px; }
   .questions { gap: 60px; }
+  .dog-peek { left: auto; right: 24px; width: 120px; }
+  .dog-rest { width: 170px; margin: 0 12px -45px; }
 }
 @media (max-width: 1000px) {
   html { scroll-padding-top: 20px; }
@@ -127,6 +151,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .hero-note { font-size: 12px; }
   .hero-art { position: relative; top: auto; right: auto; width: calc(100% + 30px); max-width: 600px; margin: 16px -15px 0; }
   .hero-art figcaption { font-size: 8px; margin-top: -9px; }
+  .dog-peek { right: 0; width: 88px; }
   .idea { padding: 55px 0 64px; }
   .section-heading { display: block; }
   h2 { font-size: 42px; }
@@ -134,7 +159,10 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .principles { grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
   .principles h3 { margin: 17px 0 11px; }
   .principles p { max-width: 520px; font-size: 16px; }
-  .evidence { padding: 64px 0; }
+  .evidence { padding: 64px 0 150px; }
+  .dog-sit-wrap { left: 20px; gap: 16px; }
+  .dog-sit { width: 92px; }
+  .dog-sit-wrap figcaption { margin-bottom: 14px; font-size: 9px; }
   .evidence-grid { grid-template-columns: 1fr; gap: 44px; }
   .evidence h2 { font-size: 53px; }
   .evidence-copy .eyebrow { font-size: 10px; margin-bottom: 26px; }
@@ -145,19 +173,23 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .questions { grid-template-columns: 1fr; gap: 34px; padding: 66px 0; }
   .questions h2 br { display: none; }
   .questions-intro { max-width: 440px; }
+  .dog-dig-wrap { margin-top: 36px; }
+  .dog-dig { width: 200px; }
   summary { font-size: 19px; }
   .closing { display: block; padding: 30px 25px; }
   .closing > p { font-size: 39px; }
   .closing > div { text-align: left; margin-top: 28px; }
+  .dog-rest { width: 150px; margin: 10px 0 0 auto; }
   .closing .button { width: 100%; justify-content: space-between; }
   .closing > div > span { font-size: 11px; line-height: 1.6; }
   .footer { flex-wrap: wrap; gap: 24px; padding: 38px 0; min-height: 0; }
   .footer p { order: 3; width: 100%; font-size: 12px; }
+  .dog-paws { display: none; }
 }
 @media (max-width: 370px) {
   h1 { font-size: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *,*::before,*::after { transition: none!important; }
+  *,*::before,*::after { transition: none!important; animation: none!important; }
 }
