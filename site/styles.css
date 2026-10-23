@@ -52,9 +52,8 @@ h2 { font-size: clamp(36px, 4.4vw, 62px); line-height: 1.06; letter-spacing: -.0
 .section-heading > p:last-child { font-size: 24px; line-height: 1.5; max-width: 460px; align-self: end; letter-spacing: -.025em; }
 .principles { display: grid; grid-template-columns: repeat(3,1fr); gap: 46px; margin-top: 62px; }
 .principles article { border-top: 1px solid var(--ink); padding-top: 20px; }
-.step { font: 12px Plex, monospace; color: var(--muted); }
 h3 { font-size: 23px; letter-spacing: -.04em; }
-.principles h3 { margin: 32px 0 16px; }
+.principles h3 { margin: 0 0 16px; }
 .principles p { font-size: 17px; line-height: 1.6; color: var(--muted); max-width: 350px; }
 .evidence { position: relative; background: var(--ink); color: var(--paper); padding: 110px 0 105px; }
 .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
@@ -178,7 +177,7 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   h2 { font-size: 42px; }
   .section-heading > p:last-child { font-size: 20px; margin-top: 24px; max-width: 450px; }
   .principles { grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
-  .principles h3 { margin: 17px 0 11px; }
+  .principles h3 { margin: 0 0 11px; }
   .principles p { max-width: 520px; font-size: 16px; }
   .evidence { padding: 64px 0 150px; }
   .dog-sit-wrap { left: 20px; gap: 16px; }
@@ -214,6 +213,16 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 }
 @media (max-width: 370px) {
   h1 { font-size: 36px; }
+}
+/* Dim mode: on dark-mode devices the page stays a light page, just dimmer and warmer, so the
+   ink dogs and ink sections keep their contrast without a bright sheet of paper at night. */
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #d2cec7; --muted: #46433d; --acid: #cce600; --lilac: #a493e3; --rule: #b2ab9e; }
+  :focus-visible { outline-color: #4a2c9c; }
+  .evidence-copy > .subtle, .evidence-copy > .example-label, .receipt-caption, .dog-sit-wrap figcaption { color: #a29d95; }
+  .accepted { color: #55327a; background: #cbc5d7; }
+  .unknown { color: #46433d; background: #c8c5bf; }
+  .home-mark, .home-wordmark, .hero-art img, .receipt-ribbon { filter: brightness(.86); }   /* paper drawn into the files */
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
