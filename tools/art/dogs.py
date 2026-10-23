@@ -11,7 +11,7 @@ hanging straight down from the ring, as the brand book asks.
 Needs Python 3.9+ and shapely 2 (pip install shapely). The page itself stays buildless: the
 output is plain inline SVG, committed with the page.
 """
-import math, re
+import math, random, re
 from pathlib import Path
 from shapely import affinity
 from shapely.geometry import LineString, MultiPolygon, Point, Polygon
@@ -159,6 +159,41 @@ def sit():
 DIG_BODY = 'M60 128 Q70 104 96 90 Q128 72 162 70 Q194 70 204 92 Q212 116 196 128 L160 128 Q130 126 100 134 Z'
 HOLE = (62, 134, 54, 14)
 
+# The dirt comes out of the hole: a lip of clods on the far rim, clods thrown up and back along a
+# few arcs (big as they leave, smaller as they fly), and the pile they land on, left of the hole.
+THROWN_FROM = (36, 121)
+THROWS = {'high': (-38, -118), 'mid': (-55, -95), 'low': (-80, -70)}   # launch velocities
+FLYING = (('high', .34, 4.4), ('high', .7, 2.8), ('mid', .34, 5.0), ('mid', .66, 3.6), ('mid', .92, 2.6),
+          ('low', .3, 4.0), ('low', .62, 3.2))                          # (arc, time along it, size)
+LIP = ((18, 121, 4.6), (27, 117, 6.0), (37, 117, 5.2), (45, 120, 3.8))
+PILE = ('M-42 143 Q-36 134 -30 128 Q-27 122 -22 123 Q-19 116 -13 119 Q-9 121 -7 127 '
+        'Q-1 134 3 143 Z')
+
+
+def clod(cx, cy, r, seed, soft):
+    """A soft, slightly lumpy clod of earth; the seed keeps each one's shape from run to run."""
+    rnd = random.Random(seed)
+    turn = rnd.uniform(0, 1)
+    pts = []
+    for k in range(7):
+        a = 2 * math.pi * (k + rnd.uniform(-0.2, 0.2)) / 7 + turn
+        rr = r * rnd.uniform(0.7, 1.0)
+        pts.append((cx + rr * math.cos(a), cy + rr * math.sin(a) * 0.85))
+    return (Polygon(pts).buffer(r * soft, join_style='round', quad_segs=4)
+            .buffer(-r * soft * 0.4, join_style='round', quad_segs=4))
+
+
+def dirt():
+    def thrown(arc, t):
+        vx, vy = THROWS[arc]
+        return THROWN_FROM[0] + vx * t, THROWN_FROM[1] + vy * t + 90 * t * t
+
+    flying = [clod(*thrown(arc, t), r, i, 0.55) for i, (arc, t, r) in enumerate(FLYING)]
+    lip = unary_union([clod(x, y, r, 20 + i, 0.6) for i, (x, y, r) in enumerate(LIP)])
+    lip = lip.buffer(1.2, quad_segs=6).buffer(-1.2, quad_segs=6)
+    pile = shape(PILE).buffer(1, quad_segs=6).buffer(-1, quad_segs=6)
+    return '<path d="%s"/>' % to_path(unary_union([pile, lip] + flying).simplify(0.05))
+
 
 def dig():
     # The band runs from the nape down into the hole and ends at the throat, where the ring is;
@@ -166,13 +201,13 @@ def dig():
     band = collar(((62, 100), (70, 112), (80, 124), (92, 136)), 4.4,
                   shape(DIG_BODY).union(ellipse(*HOLE)), hang_end=True)
     parts = ['<ellipse cx="%s" cy="%s" rx="%s" ry="%s"/>' % HOLE,
+             dirt(),
              '<path d="%s"/>' % DIG_BODY,
              '<path d="M168 122 L164 146 L182 146 L186 122 Z M188 122 L186 146 L204 146 L206 122 Z"/>',
              '<path class="dog-line" d="M170 146 V140 M176 146 V140 M192 146 V140 M198 146 V140"/>',
              '<g class="dog-tail" style="transform-origin:202px 88px"><path d="M200 90 Q206 62 226 48 Q232 52 224 62 Q214 76 212 96 Z"/></g>',
-             band,
-             '<path d="M16 112 l7 -4 l2 7 z M30 98 l6 -5 l4 7 z M8 126 l6 0 l-1 6 z M44 92 l3 -5 l4 4 z"/>']
-    return ('<svg class="dog dog-dig" viewBox="0 0 240 150" width="300" aria-hidden="true" focusable="false">'
+             band]
+    return ('<svg class="dog dog-dig" viewBox="-42 0 282 150" width="352" aria-hidden="true" focusable="false">'
             + ''.join(parts) + '</svg>')
 
 
@@ -182,13 +217,14 @@ REST_CHEST = 'M52 112 Q46 82 62 62 L106 62 Q122 82 116 112 Z'
 
 
 def rest(tilt=-6, look=1.6):
-    """Lying down, head up and a little tilted, watching the button."""
-    head = ('<g transform="rotate(%s 84 40)">' % f(tilt) +
+    """Lying down, head up and a little tilted, watching the button. The outer head group pivots
+    on the neck, so the stylesheet can bob the head in time with the tail."""
+    head = ('<g class="dog-head" style="transform-origin:84px 64px"><g transform="rotate(%s 84 40)">' % f(tilt) +
             '<path d="M50 44 Q50 10 84 10 Q118 10 118 44 L118 54 Q118 66 104 68 L64 68 Q50 66 50 54 Z"/>'
             '<path d="M52 22 L32 44 L44 68 L58 52 Z M116 22 L136 44 L124 68 L110 52 Z"/>'
             '<circle class="dog-bg" cx="72" cy="38" r="5.5"/><circle class="dog-bg" cx="96" cy="38" r="5.5"/>'
             '<g class="dog-eyes"><circle cx="%s" cy="38.5" r="2.8"/><circle cx="%s" cy="38.5" r="2.8"/></g>' % (f(72 + look), f(96 + look)) +
-            '<path class="dog-bg" d="M84 52 l7 7 l-7 7 l-7 -7 z"/></g>')
+            '<path class="dog-bg" d="M84 52 l7 7 l-7 7 l-7 -7 z"/></g></g>')
     parts = ['<path d="%s"/>' % REST_BODY,
              '<path d="M214 118 Q234 114 242 100 Q254 108 248 118 Z"/>',
              '<g class="dog-tail" style="transform-origin:240px 104px"><path d="M238 106 Q252 98 260 82 Q264 86 260 94 Q254 110 242 114 Z"/></g>',
