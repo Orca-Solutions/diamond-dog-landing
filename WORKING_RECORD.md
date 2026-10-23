@@ -331,3 +331,34 @@ titles moved up to close the gap.
 
 Verification: full-page Chromium renders of both colour schemes at 1440 and
 390 px. Not checked on a real device's dark mode.
+
+## 2026-10-23 — Dirt out of the hole, a head bob, the torn edge, a preview switch
+
+Follow-ups on the same branch (PR #9):
+
+- **Dirt.** Jason: the dirt was in the wrong place and should look like it comes
+  out of the hole. The four loose triangles are replaced by a lip of clods on
+  the hole's far rim, clods thrown up and back along three arcs (big as they
+  leave, smaller as they fly) and a pile left of the hole where they land, all
+  in flat ink like the dog (`dirt()` in `tools/art/dogs.py`). The viewBox grows
+  42 units to the left for the pile, so the drawing is 352 px wide (258 px on
+  narrow screens) and the dog stays the same size.
+- **Head bob.** The resting dog on the closing panel tilts his head left, right,
+  left in time with his tail wag (same 8 s cycle and 5 s delay as the tail,
+  ±5°, pivoting at the neck). Off under reduced motion, like every animation.
+- **Torn edge.** Jason saw the receipt's serrated bottom edge split into two
+  offset strips on his Mac. It was two tiled gradients on the tilted card, which
+  some browsers rasterise apart; Chromium here showed faint seams but not the
+  split. It is now one solid strip clipped to a single zigzag path (14 px teeth,
+  wide enough for any card) that tucks 1 px under the card.
+- **Preview switch.** On Cloudflare's branch and commit links
+  (`*.diamonddog-a17.pages.dev`) a small Auto / Light / Dim switch sits bottom
+  right, so dim mode can be tried without changing the device. It retargets the
+  dim-mode media rule, so there is no second copy of the palette; the choice
+  lasts for the tab. The live domain never shows it.
+
+Verification: Chromium renders of the questions section at 1440, 1050, 900 and
+390 px; head-bob frames at each beat of the wag; the torn edge at 1440, 1280,
+1100, 900 and 390 px, light and dim, and at 1, 1.25, 1.5 and 2× pixel ratios;
+the switch on a simulated preview host (each mode, reload, device dark mode) and
+absent on the local host. Not checked in Safari, where the split was seen.

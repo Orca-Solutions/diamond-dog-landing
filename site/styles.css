@@ -64,7 +64,10 @@ h3 { font-size: 23px; letter-spacing: -.04em; }
 .evidence-copy > .subtle { color: #b5b0a8; font-size: 18px!important; max-width: 430px; }
 .evidence-copy > .example-label { font: 9px/1.7 Plex, monospace!important; color: #b5b0a8; max-width: 380px; }
 .receipt { position: relative; color: var(--ink); background: var(--paper); padding: 32px; transform: rotate(1.2deg); }
-.receipt::after { content: ''; position: absolute; top: 100%; right: 0; left: 0; height: 13px; background: linear-gradient(135deg,var(--paper) 25%,transparent 25%) -7px 0 / 14px 14px,linear-gradient(225deg,var(--paper) 25%,transparent 25%) -7px 0 / 14px 14px; }
+/* The torn edge is one clipped shape (14px teeth, wider than any card) rather than tiled gradients,
+   which some browsers split apart on the tilted card. It tucks 1px under the card to hide the seam. */
+.receipt::after { content: ''; position: absolute; top: calc(100% - 1px); right: 0; left: 0; height: 11px; background: var(--paper);
+  clip-path: path('M0 0V4l7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7 7-7V0Z'); }
 .receipt-header { display: flex; justify-content: space-between; padding-bottom: 21px; border-bottom: 1px dashed #79736a; font: 11px Plex, monospace; }
 .receipt h3 { font-size: 28px; margin: 27px 0 25px; line-height: 1.16; max-width: 350px; }
 .receipt-facts { margin: 0 0 27px; }
@@ -126,8 +129,8 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 .dog-sit-wrap { position: absolute; left: max(56px, calc(50% - 660px)); bottom: 0; display: flex; align-items: flex-end; gap: 22px; color: var(--paper); }
 .dog-sit { width: 120px; --dog-bg: var(--ink); --dog-metal: var(--ink); }
 .dog-sit-wrap figcaption { margin-bottom: 20px; font: 10px/1.6 Plex, monospace; letter-spacing: .06em; color: #b5b0a8; }
-.dog-dig-wrap { width: 300px; margin: 28px 0 0 auto; }
-.dog-dig { width: 300px; }
+.dog-dig-wrap { width: 352px; margin: 28px 0 0 auto; }
+.dog-dig { width: 352px; }
 .dog-dig-wrap figcaption { margin-top: 8px; font: 10px/1.6 Plex, monospace; letter-spacing: .06em; color: var(--muted); }
 .dog-rest { width: 250px; align-self: flex-end; margin: 0 24px -45px; --dog-bg: var(--lilac); }
 .dog-paws { width: 120px; margin-left: auto; margin-right: 34px; opacity: .55; }
@@ -135,6 +138,8 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 .dog-sit .dog-tail { animation-delay: 2.5s; }
 .dog-rest .dog-tail { animation-delay: 5s; }
 @keyframes dog-wag { 0%, 13%, 100% { transform: rotate(0); } 3% { transform: rotate(14deg); } 6.5% { transform: rotate(-10deg); } 10% { transform: rotate(9deg); } }
+.dog-rest .dog-head { animation: dog-bob 8s ease-in-out 5s infinite; }   /* in time with the tail: left, right, left */
+@keyframes dog-bob { 0%, 13%, 100% { transform: rotate(0); } 3% { transform: rotate(-5deg); } 6.5% { transform: rotate(5deg); } 10% { transform: rotate(-4deg); } }
 @keyframes dog-glance { 0%, 42%, 76%, 100% { transform: translateX(0); } 48%, 70% { transform: translateX(-4px); } }
 
 @media (max-width: 1100px) {
@@ -193,8 +198,8 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
   .questions { grid-template-columns: 1fr; gap: 34px; padding: 66px 0; }
   .questions h2 br { display: none; }
   .questions-intro { max-width: 440px; }
-  .dog-dig-wrap { width: 220px; margin: 28px 0 0; }
-  .dog-dig { width: 220px; }
+  .dog-dig-wrap { width: 258px; margin: 28px 0 0; }
+  .dog-dig { width: 258px; }
   .receipt-ribbon { display: none; }
   .receipt-ribbon.receipt-ribbon-stacked { display: block; left: calc(470px + min(100% - 470px, 390px) * -0.0026); width: calc(min(100% - 470px, 390px) * 0.4410); top: 475px; margin-top: calc(min(100% - 470px, 390px) * -1.2846); }
   summary { font-size: 19px; }
@@ -214,6 +219,13 @@ details p { margin: -4px 32px 27px 0; font-size: 16px; line-height: 1.65; color:
 @media (max-width: 370px) {
   h1 { font-size: 36px; }
 }
+/* Preview builds only: script.js adds this switch on Cloudflare preview links, never on the live site. */
+.scheme-switch { position: fixed; z-index: 30; right: 16px; bottom: 16px; display: flex; align-items: center; gap: 2px; padding: 3px; background: var(--ink); color: var(--paper); border: 1px solid var(--paper); font: 11px Plex, monospace; letter-spacing: .06em; text-transform: uppercase; }
+.scheme-switch span { padding: 0 8px 0 7px; color: #b5b0a8; }
+.scheme-switch button { min-height: 32px; padding: 0 11px; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; }
+.scheme-switch button:hover { text-decoration: underline; text-underline-offset: .25em; }
+.scheme-switch button[aria-pressed="true"] { background: var(--acid); color: var(--ink); text-decoration: none; }
+
 /* Dim mode: on dark-mode devices the page stays a light page, just dimmer and warmer, so the
    ink dogs and ink sections keep their contrast without a bright sheet of paper at night. */
 @media (prefers-color-scheme: dark) {
