@@ -1,5 +1,31 @@
 # Working record
 
+## 2026-10-22 — Preview links when a PR opens after its build
+
+Jason reported PR9 had no preview comment despite the earlier preview setup.
+Cloudflare's automatic branch build at source
+`a7ba8584213399b92d820523f6ceb80287a48585` succeeded at 02:17:06Z on October23;
+the PR opened at 02:18:47Z (both October22 Pacific). The native comment flag
+was enabled, but no comment was added afterward. Rebuilding that existing
+non-production deployment restored the native comment; the preview passed
+normal HTTPS and noindex. Production configuration and site files were unchanged.
+
+Prepared `preview-link.yml` to reconcile open same-repository PRs on PR events
+and Cloudflare check completion. It publishes a missing successful preview link
+from the existing check, validates the official app/account/project/deployment
+hostname and current head, keeps its fallback current, and preserves native
+comments. A repository-level concurrency group serializes reconciliation; each
+run examines all open PRs so superseded queued events do not lose another PR.
+No PR checkout/code execution, Cloudflare credential or deployment right is
+used. The only write permission is PR comments; forks are skipped.
+
+Nineteen local regressions cover the build-before-PR case, native-comment
+deduplication, updates/failure/stale-head handling, spoofed metadata/URLs, fork
+exclusion and reconciliation. Actionlint passed. These source checks do not
+establish installed main-branch event handling; candidate PR acceptance and
+Jason's normal merge are recorded separately. Existing site rendering evidence
+is reused because no public page/asset changed.
+
 ## 2026-10-20 — Coming-soon website and brand handoff
 
 Jason approved Diamond Dog's brand direction and requested a coming-soon site, a separate branch, and a separate repository containing both the site and brand kit. The OrcaOS tool repository is outside this change's scope.

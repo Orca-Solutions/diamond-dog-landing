@@ -1,0 +1,122 @@
+name: Link Cloudflare previews
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+  check_run:
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  checks: read
+  pull-requests: write
+
+# Reconcile every open PR, so a newer queued event also covers earlier events.
+concurrency:
+  group: cloudflare-preview-comments
+  cancel-in-progress: false
+
+jobs:
+  link:
+    if: >-
+      (github.event_name == 'pull_request' &&
+       github.event.pull_request.head.repo.full_name == github.repository) ||
+      (github.event_name == 'check_run' && github.event.check_run.app.id == 85455) ||
+      github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      # No checkout, build, deployment credentials or PR-controlled executable.
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          CF_ACCOUNT: 10a1430d3ed1c6f0b8bafcd1170c3778
+          CF_PROJECT: diamonddog
+          CF_HOST: diamonddog-a17.pages.dev
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const repository = `${owner}/${repo}`;
+            const account = process.env.CF_ACCOUNT;
+            const project = process.env.CF_PROJECT;
+            const host = process.env.CF_HOST;
+            const marker = `<!-- cloudflare-preview-link:${project} -->`;
+
+            if (!/^[a-f0-9]{32}$/.test(account) ||
+                !/^[a-z0-9-]+$/.test(project) ||
+                !/^[a-z0-9-]+\.pages\.dev$/.test(host)) {
+              throw new Error('Invalid fixed Pages project configuration');
+            }
+
+            function deploymentId(check) {
+              if (check.app?.id !== 85455 ||
+                  check.app?.slug !== 'cloudflare-workers-and-pages') return null;
+              try {
+                const url = new URL(check.details_url);
+                if (url.origin !== 'https://dash.cloudflare.com') return null;
+                const path = url.searchParams.get('to') || url.pathname;
+                const prefix = `/${account}/pages/view/${project}/`;
+                const id = path.startsWith(prefix) ? path.slice(prefix.length) : '';
+                return /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/.test(id) ? id : null;
+              } catch { return null; }
+            }
+
+            function previewUrl(check) {
+              if (check.status !== 'completed' || check.conclusion !== 'success') return null;
+              const id = deploymentId(check);
+              if (!id) return null;
+              for (const match of (check.output?.summary || '').matchAll(/href=["']([^"']+)["']/g)) {
+                try {
+                  const url = new URL(match[1]);
+                  if (url.protocol === 'https:' && !url.username && !url.password && !url.port &&
+                      url.hostname === `${id.slice(0, 8)}.${host}` && url.pathname === '/' &&
+                      !url.search && !url.hash) return url.href;
+                } catch { /* Ignore malformed provider metadata. */ }
+              }
+              return null;
+            }
+
+            const pulls = await github.paginate(github.rest.pulls.list, {
+              owner, repo, state: 'open', per_page: 100,
+            });
+            for (const pull of pulls) {
+              if (pull.state !== 'open' || pull.head.repo?.full_name !== repository ||
+                  pull.base.repo?.full_name !== repository || !/^[a-f0-9]{40}$/.test(pull.head.sha)) continue;
+              const sha = pull.head.sha;
+              const checks = await github.paginate(github.rest.checks.listForRef, {
+                owner, repo, ref: sha, filter: 'latest', per_page: 100,
+              });
+              const check = checks.filter(c => c.head_sha === sha && deploymentId(c))
+                .sort((a, b) => b.id - a.id)[0];
+              const url = check ? previewUrl(check) : null;
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner, repo, issue_number: pull.number, per_page: 100,
+              });
+              const managed = comments.find(c => c.user.login === 'github-actions[bot]' &&
+                c.body?.startsWith(marker));
+              const native = url && comments.some(c =>
+                c.user.login === 'cloudflare-workers-and-pages[bot]' &&
+                c.body?.includes(url.replace(/\/$/, '')) && c.body.includes(sha.slice(0, 7)));
+              if ((!managed && !url) || (!managed && native)) continue;
+
+              const failed = check?.status === 'completed' &&
+                ['failure', 'cancelled', 'timed_out', 'action_required'].includes(check.conclusion);
+              const status = url ? `**[Open Cloudflare preview](${url})**` :
+                failed ? '**Cloudflare preview did not succeed.** See the Cloudflare check.' :
+                '**Waiting for a successful Cloudflare preview of this commit.**';
+              const body = `${marker}\n### Cloudflare preview\n\n${status}\n\nCommit: \`${sha}\`\n\n` +
+                'Preview only; production changes after merge. This link follows the current PR commit.';
+              if (managed?.body === body) continue;
+
+              // A previous build finishing must never publish a link for an older PR head.
+              const { data: current } = await github.rest.pulls.get({
+                owner, repo, pull_number: pull.number,
+              });
+              if (current.state !== 'open' || current.head.sha !== sha ||
+                  current.head.repo?.full_name !== repository ||
+                  current.base.repo?.full_name !== repository) continue;
+              if (managed) {
+                await github.rest.issues.updateComment({ owner, repo, comment_id: managed.id, body });
+              } else {
+                await github.rest.issues.createComment({ owner, repo, issue_number: pull.number, body });
+              }
+            }

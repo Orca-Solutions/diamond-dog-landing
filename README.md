@@ -39,6 +39,20 @@ needed. Once production is activated, pushes to `main` deploy automatically;
 other branches produce previews. An exact build/deployment receipt and the
 current activation status belong in the [DevOps hosting record](https://github.com/Orca-Solutions/dev-ops/blob/main/deployments/diamonddog/README.md).
 
+PRs should show a clickable Cloudflare preview comment. Cloudflare's native
+comment can be missing when the branch finished building before its PR opened.
+`.github/workflows/preview-link.yml` fills that gap on PR creation and Cloudflare
+check completion. It reads the successful check's exact deployment and current
+PR commit, preserving a native comment when one already exists. A fallback
+comment updates on subsequent commits and clears an old link while a new
+preview is pending or failed. It uses only the temporary GitHub token with
+checks-read and PR-comment permissions; no checkout, Cloudflare token, new
+build or production deployment is involved. Fork PRs are excluded.
+
+Check the link handler locally with `node --test tools/preview-link.test.mjs`.
+The completed-check/manual triggers become active once this workflow is on
+`main`; the PR trigger also verifies the candidate workflow before merge.
+
 The earlier owner-private review deployment remains on ChatGPT Sites:
 
 https://diamond-dog-coming-soon.ninjasoforca.chatgpt.site
