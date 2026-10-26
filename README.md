@@ -1,3 +1,5 @@
+![Diamond Dog — Delegate work, not your identity.](brand-kit/applications/github-readme-header.png)
+
 # Diamond Dog
 
 **Delegate work, not your identity.**
@@ -74,3 +76,7 @@ The selected logo has symmetrical ears. The black editorial dog has a narrow aci
 The brand book is the v1 design handoff; its landing-page concept is a historical concept, while `site/` is the implemented website. No changes are made to the tool's fixed inspector test screens.
 
 Font license notices are included beside the font files. A brand-asset usage policy and a license for this website's source have not been selected. The tool's proposed software licenses do not automatically license these assets. The name and mark have not been cleared for public use. Allan Peters and Wharton did not participate in or endorse this work.
+
+## Shared project instructions
+
+[AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md) are matching, tracked entry points for local and cloud agents. Keep personal overrides in ignored `CLAUDE.local.md`.
