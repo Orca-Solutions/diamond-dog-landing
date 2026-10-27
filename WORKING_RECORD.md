@@ -388,3 +388,15 @@ Verification: Chromium renders of the questions section at 1440, 1050, 900 and
 1100, 900 and 390 px, light and dim, and at 1, 1.25, 1.5 and 2× pixel ratios;
 the switch on a simulated preview host (each mode, reload, device dark mode) and
 absent on the local host. Not checked in Safari, where the split was seen.
+
+## 2026-10-23 — "Back to top" goes to the top
+
+Jason found that "Back to top" in the footer didn't reach the top. The links
+pointed at `#top`, which was the sticky header's id. A sticky header is always
+in view, so the browser only scrolled up by the scroll padding (104 px, 80 px
+on narrow screens) and stopped. The header no longer carries the id, so `#top`
+now means the top of the page, as HTML defines it for that name. This covers
+the footer's text link, the footer logo and the header's home link.
+
+Verification: Chromium at 1440 and 390 px, from the bottom of the page, each
+link ends at scroll position 0 (before the fix: 2650 → 2546 and 3902 → 3822).
